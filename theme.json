@@ -1,0 +1,303 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "1200px",
+			"wideSize": "1400px"
+		},
+		"color": {
+			"palette": [
+				{
+					"slug": "primary",
+					"color": "#0099ff",
+					"name": "Primary Blue"
+				},
+				{
+					"slug": "primary-dark",
+					"color": "#019ad2",
+					"name": "Primary Dark"
+				},
+				{
+					"slug": "secondary",
+					"color": "#057fd0",
+					"name": "Secondary Blue"
+				},
+				{
+					"slug": "accent",
+					"color": "#ff6600",
+					"name": "Accent Orange"
+				},
+				{
+					"slug": "success",
+					"color": "#28a745",
+					"name": "Success Green"
+				},
+				{
+					"slug": "warning",
+					"color": "#ffc107",
+					"name": "Warning Yellow"
+				},
+				{
+					"slug": "danger",
+					"color": "#dc3545",
+					"name": "Danger Red"
+				},
+				{
+					"slug": "light",
+					"color": "#f8f9fa",
+					"name": "Light Gray"
+				},
+				{
+					"slug": "dark",
+					"color": "#212529",
+					"name": "Dark"
+				},
+				{
+					"slug": "navy",
+					"color": "#0a1e3c",
+					"name": "Navy Blue"
+				},
+				{
+					"slug": "white",
+					"color": "#ffffff",
+					"name": "White"
+				},
+				{
+					"slug": "black",
+					"color": "#000000",
+					"name": "Black"
+				},
+				{
+					"slug": "table-header",
+					"color": "#f2f2f2",
+					"name": "Table Header"
+				}
+			]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "Kanit, sans-serif",
+					"slug": "kanit",
+					"name": "Kanit",
+					"fontFace": [
+						{
+							"fontFamily": "Kanit",
+							"fontWeight": "300",
+							"fontStyle": "normal",
+							"src": ["https://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr4uPhWnVaE.woff2"]
+						},
+						{
+							"fontFamily": "Kanit",
+							"fontWeight": "400",
+							"fontStyle": "normal",
+							"src": ["https://fonts.gstatic.com/s/kanit/v15/nKKZ-Go6G5tXcraBGwA.woff2"]
+						},
+						{
+							"fontFamily": "Kanit",
+							"fontWeight": "500",
+							"fontStyle": "normal",
+							"src": ["https://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr5-PxWnVaE.woff2"]
+						},
+						{
+							"fontFamily": "Kanit",
+							"fontWeight": "600",
+							"fontStyle": "normal",
+							"src": ["https://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr5SPBWnVaE.woff2"]
+						},
+						{
+							"fontFamily": "Kanit",
+							"fontWeight": "700",
+							"fontStyle": "normal",
+							"src": ["https://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr42PRWnVaE.woff2"]
+						}
+					]
+				},
+				{
+					"fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
+					"slug": "system",
+					"name": "System Font"
+				}
+			],
+			"fontSizes": [
+				{
+					"slug": "small",
+					"size": "0.875rem",
+					"name": "Small"
+				},
+				{
+					"slug": "medium",
+					"size": "1rem",
+					"name": "Medium"
+				},
+				{
+					"slug": "large",
+					"size": "1.25rem",
+					"name": "Large"
+				},
+				{
+					"slug": "x-large",
+					"size": "1.5rem",
+					"name": "Extra Large"
+				},
+				{
+					"slug": "xx-large",
+					"size": "2rem",
+					"name": "Huge"
+				}
+			]
+		},
+		"spacing": {
+			"units": ["px", "em", "rem", "%", "vh", "vw"]
+		},
+		"useRootPaddingAwareAlignments": true
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--white)",
+			"text": "var(--wp--preset--color--dark)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--kanit)",
+			"fontSize": "var(--wp--preset--font-size--medium)",
+			"lineHeight": "1.6"
+		},
+		"spacing": {
+			"padding": {
+				"top": "0",
+				"right": "var(--wp--preset--spacing--30)",
+				"bottom": "0",
+				"left": "var(--wp--preset--spacing--30)"
+			}
+		},
+		"elements": {
+			"link": {
+				"color": {
+					"text": "var(--wp--preset--color--primary)"
+				},
+				"typography": {
+					"textDecoration": "none"
+				},
+				":hover": {
+					"color": {
+						"text": "var(--wp--preset--color--primary-dark)"
+					},
+					"typography": {
+						"textDecoration": "underline"
+					}
+				}
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--primary)",
+					"text": "var(--wp--preset--color--white)"
+				},
+				"border": {
+					"radius": "4px"
+				},
+				"typography": {
+					"fontSize": "15px",
+					"fontWeight": "500",
+					"letterSpacing": "1px",
+					"textTransform": "uppercase"
+				},
+				":hover": {
+					"color": {
+						"background": "var(--wp--preset--color--primary-dark)"
+					}
+				}
+			},
+			"heading": {
+				"color": {
+					"text": "var(--wp--preset--color--dark)"
+				},
+				"typography": {
+					"fontWeight": "600"
+				}
+			},
+			"h1": {
+				"typography": {
+					"fontSize": "2.5rem"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontSize": "2rem"
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontSize": "1.5rem"
+				}
+			}
+		},
+		"blocks": {
+			"core/navigation": {
+				"typography": {
+					"fontWeight": "500"
+				}
+			},
+			"core/site-title": {
+				"typography": {
+					"fontSize": "1.5rem",
+					"fontWeight": "700"
+				},
+				"elements": {
+					"link": {
+						"color": {
+							"text": "var(--wp--preset--color--white)"
+						},
+						":hover": {
+							"typography": {
+								"textDecoration": "none"
+							}
+						}
+					}
+				}
+			},
+			"core/table": {
+				"border": {
+					"color": "#ddd",
+					"width": "1px",
+					"style": "solid"
+				}
+			},
+			"woocommerce/product-image": {
+				"border": {
+					"radius": "4px"
+				}
+			}
+		}
+	},
+	"templateParts": [
+		{
+			"name": "header",
+			"title": "Header",
+			"area": "header"
+		},
+		{
+			"name": "footer",
+			"title": "Footer",
+			"area": "footer"
+		},
+		{
+			"name": "comments",
+			"title": "Comments",
+			"area": "uncategorized"
+		},
+		{
+			"name": "sidebar",
+			"title": "Sidebar",
+			"area": "sidebar"
+		}
+	],
+	"customTemplates": [
+		{
+			"name": "blank",
+			"title": "Blank",
+			"postTypes": ["page", "post"]
+		}
+	]
+}

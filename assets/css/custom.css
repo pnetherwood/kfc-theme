@@ -1,0 +1,1879 @@
+/**
+ * KFC Theme - Custom Styles
+ */
+
+/* ==========================================================================
+   Links - Remove underlines
+   ========================================================================== */
+
+#content-vw a,
+.entry-content a,
+.widget_text a,
+.woocommerce-page .entry-summary a {
+	text-decoration: none;
+}
+
+/* ==========================================================================
+   Buttons - Book Now / Add to Cart styling
+   ========================================================================== */
+
+/* Universal button styling - Modern flat design */
+.add_to_cart_button,
+.wp-block-button__link,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.wc-block-components-button,
+.wc-block-cart__submit-button,
+.wc-block-components-checkout-place-order-button,
+.wc-block-components-totals-coupon__button,
+.wc-block-components-form .wc-block-components-button,
+main button[type="submit"],
+main input[type="submit"],
+.entry-content button[type="submit"],
+.entry-content input[type="submit"],
+.entry-content .button,
+.entry-content .btn,
+.wp-block-post-content .button,
+.wp-block-post-content .btn,
+.woocommerce .button,
+.woocommerce .btn {
+	background: linear-gradient(135deg, #0099ff 0%, #0077cc 100%) !important;
+	border: none !important;
+	color: #ffffff !important;
+	padding: 12px 28px !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.5px !important;
+	text-transform: uppercase !important;
+	border-radius: 6px !important;
+	box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3) !important;
+	text-shadow: none !important;
+	font-family: inherit !important;
+	transition: all 0.2s ease !important;
+	line-height: 1.4 !important;
+	cursor: pointer !important;
+	text-decoration: none !important;
+	display: inline-block !important;
+}
+
+.add_to_cart_button:hover,
+.wp-block-button__link:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.wc-block-components-button:hover,
+.wc-block-cart__submit-button:hover,
+.wc-block-components-checkout-place-order-button:hover,
+.wc-block-components-totals-coupon__button:hover,
+main button[type="submit"]:hover,
+main input[type="submit"]:hover,
+.entry-content .button:hover,
+.entry-content .btn:hover,
+.woocommerce .button:hover,
+.woocommerce .btn:hover {
+	background: linear-gradient(135deg, #00aaff 0%, #0088dd 100%) !important;
+	color: #ffffff !important;
+	text-decoration: none !important;
+	box-shadow: 0 4px 12px rgba(0, 153, 255, 0.4) !important;
+	transform: translateY(-1px) !important;
+}
+
+.add_to_cart_button:active,
+.wp-block-button__link:active,
+.woocommerce a.button:active,
+.woocommerce button.button:active,
+.woocommerce input.button:active,
+.wc-block-components-button:active,
+main button[type="submit"]:active,
+main input[type="submit"]:active,
+.entry-content .button:active,
+.entry-content .btn:active,
+.woocommerce .button:active,
+.woocommerce .btn:active {
+	transform: translateY(0) !important;
+	box-shadow: 0 1px 4px rgba(0, 153, 255, 0.3) !important;
+}
+
+/* Disabled/Course Full buttons */
+.add_to_cart_button.disabled,
+.add_to_cart_button[disabled],
+.woocommerce a.button.disabled,
+.woocommerce button.button.disabled,
+.wc-block-components-button:disabled,
+main button[type="submit"]:disabled,
+main input[type="submit"]:disabled {
+	background: linear-gradient(135deg, #cccccc 0%, #aaaaaa 100%) !important;
+	box-shadow: none !important;
+	cursor: not-allowed !important;
+	opacity: 0.7 !important;
+	transform: none !important;
+}
+
+/* ==========================================================================
+   Tables - Course listing and general tables
+   ========================================================================== */
+
+.wp-block-table table,
+table.courses-table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.wp-block-table th,
+.wp-block-table td,
+table.courses-table th,
+table.courses-table td {
+	padding: 12px;
+	border: 1px solid #ddd;
+	text-align: left;
+}
+
+.wp-block-table th,
+table.courses-table th {
+	background-color: #f2f2f2;
+	font-weight: bold;
+}
+
+/* Course status colors */
+.course-status-available {
+	color: #28a745;
+	font-weight: 600;
+}
+
+.course-status-full {
+	color: #dc3545;
+	font-weight: 600;
+}
+
+.course-status-inprogress {
+	color: #ff6600;
+	font-weight: 600;
+}
+
+.course-status-completed {
+	color: #28a745;
+	font-weight: 600;
+}
+
+/* Course thumbnail in table */
+.courses-table .course-thumbnail img {
+	max-width: 70px;
+	height: auto;
+}
+
+/* ==========================================================================
+   Recent News Shortcode
+   ========================================================================== */
+
+.kfc-recent-news {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 30px;
+}
+
+.kfc-recent-news .news-item {
+	background: #ffffff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow: hidden;
+	transition: box-shadow 0.3s ease;
+}
+
+.kfc-recent-news .news-item:hover {
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.kfc-recent-news .news-thumbnail img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+
+.kfc-recent-news .news-content {
+	padding: 20px;
+}
+
+.kfc-recent-news .news-title {
+	font-size: 1.25rem;
+	margin: 0 0 10px 0;
+}
+
+.kfc-recent-news .news-title a {
+	color: #212529;
+	text-decoration: none;
+}
+
+.kfc-recent-news .news-title a:hover {
+	color: #0099ff;
+}
+
+.kfc-recent-news .news-date {
+	color: #6c757d;
+	font-size: 0.875rem;
+	margin: 0 0 10px 0;
+}
+
+.kfc-recent-news .news-excerpt {
+	color: #495057;
+	margin-bottom: 15px;
+}
+
+.kfc-recent-news .news-read-more {
+	color: #0099ff;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.kfc-recent-news .news-read-more:hover {
+	text-decoration: underline;
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+/* Shadowbox */
+.shadowbox {
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	padding: 5%;
+	margin: 5%;
+}
+
+/* Lightweight font */
+.lightweightfont a {
+	font-weight: 200 !important;
+}
+
+/* ==========================================================================
+   WooCommerce Adjustments
+   ========================================================================== */
+
+/* Product gallery */
+.woocommerce div.product div.images img {
+	border-radius: 4px;
+}
+
+/* Product price */
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+	color: #0099ff;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+/* Sale badge */
+.woocommerce span.onsale {
+	background-color: #ff6600;
+	border-radius: 4px;
+}
+
+/* Star rating */
+.woocommerce .star-rating span::before {
+	color: #ffc107;
+}
+
+/* Cart and checkout */
+.woocommerce-cart .cart-collaterals .cart_totals,
+.woocommerce-checkout #order_review {
+	background: #f8f9fa;
+	padding: 20px;
+	border-radius: 4px;
+}
+
+/* Form fields */
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row select {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 10px;
+}
+
+.woocommerce form .form-row input.input-text:focus,
+.woocommerce form .form-row textarea:focus {
+	border-color: #0099ff;
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(0, 153, 255, 0.2);
+}
+
+/* ==========================================================================
+   MetaSlider - Remove gaps on front page
+   ========================================================================== */
+
+/* Target the wrapper group on front page */
+body.home .wp-block-group.alignfull:first-child,
+body.page-template-front-page .wp-block-group.alignfull:first-child {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+body.home .wp-block-group.alignfull:first-child > * {
+	margin: 0 !important;
+}
+
+.metaslider,
+.metaslider-flex,
+.metaslider .flexslider,
+.metaslider .slides,
+.metaslider .slides li,
+.metaslider .slides img,
+.metaslider .flex-viewport {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+/* Remove gap from shortcode wrapper */
+.wp-block-shortcode {
+	margin: 0 !important;
+	padding: 0 !important;
+	line-height: 0;
+	font-size: 0;
+}
+
+/* Fix inline-block gap */
+.metaslider img {
+	display: block;
+	vertical-align: bottom;
+}
+
+/* Remove WordPress default block spacing after slider */
+.home .has-global-padding > .alignfull:first-child {
+	margin-block-start: 0 !important;
+}
+
+.home .wp-site-blocks > .alignfull:first-child {
+	margin-top: 0 !important;
+}
+
+/* Remove header margin on home page */
+body.home header,
+body.home .wp-block-template-part,
+.home .wp-site-blocks > header,
+.home .wp-site-blocks > .wp-block-template-part {
+	margin: 0 !important;
+	margin-block-start: 0 !important;
+}
+
+/* Remove ALL gaps on home page between slider and header */
+body.home .wp-site-blocks > *:first-child {
+	margin-bottom: 0 !important;
+}
+
+body.home .wp-site-blocks > *:nth-child(2) {
+	margin-top: 0 !important;
+}
+
+body.home .wp-site-blocks {
+	gap: 0 !important;
+}
+
+/* Target flexslider specifically */
+.flex-caption,
+.metaslider-flex .flex-control-nav {
+	margin: 0 !important;
+}
+
+.flexslider {
+	border: none !important;
+	margin: 0 0 0 0 !important;
+}
+
+/* Hide empty paragraph in MetaSlider container */
+#metaslider_container_3434 p:empty,
+.metaslider p:empty,
+[id^="metaslider_container_"] p:empty {
+	display: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	line-height: 0 !important;
+	height: 0 !important;
+}
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+/* Main navigation items */
+.wp-block-navigation .wp-block-navigation-item a {
+	padding: 6px 8px;
+	border-radius: 4px;
+	transition: background-color 0.2s ease;
+	white-space: nowrap;
+}
+
+.wp-block-navigation .wp-block-navigation-item a:hover {
+	background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Navigation separators between items */
+.wp-block-navigation .wp-block-navigation-item:not(:last-child)::after {
+	content: "|";
+	color: rgba(255, 255, 255, 0.4);
+	margin-left: 0.3rem;
+	font-weight: 300;
+}
+
+/* Keep header on one line when space allows */
+.wp-block-group.alignwide.is-layout-flex {
+	flex-wrap: nowrap;
+}
+
+@media (max-width: 1200px) {
+	.wp-block-group.alignwide.is-layout-flex {
+		flex-wrap: wrap;
+	}
+}
+
+/* Submenu dropdown styling */
+.wp-block-navigation .wp-block-navigation__submenu-container {
+	background-color: #0099ff;
+	border-radius: 4px;
+	padding: 8px 0;
+	min-width: 150px;
+}
+
+.wp-block-navigation .wp-block-navigation__submenu-container a {
+	padding: 8px 16px;
+}
+
+/* Mobile menu overlay */
+.wp-block-navigation__responsive-container.is-menu-open {
+	background-color: #0099ff;
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item a {
+	color: #ffffff;
+	font-size: 1.25rem;
+	padding: 10px 0;
+}
+
+/* Hide separators on mobile */
+@media (max-width: 782px) {
+	.wp-block-navigation .wp-block-navigation-item::after {
+		display: none;
+	}
+}
+
+/* ==========================================================================
+   WOW.js / Animate.css Animations
+   ========================================================================== */
+
+.animated {
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+
+.animated.infinite {
+	animation-iteration-count: infinite;
+}
+
+.wow {
+	visibility: hidden;
+}
+
+.wow.animated {
+	visibility: visible;
+}
+
+/* Bounce In Left */
+@keyframes bounceInLeft {
+	from, 60%, 75%, 90%, to {
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	0% {
+		opacity: 0;
+		transform: translate3d(-3000px, 0, 0);
+	}
+	60% {
+		opacity: 1;
+		transform: translate3d(25px, 0, 0);
+	}
+	75% {
+		transform: translate3d(-10px, 0, 0);
+	}
+	90% {
+		transform: translate3d(5px, 0, 0);
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.bounceInLeft {
+	animation-name: bounceInLeft;
+}
+
+/* Bounce In Right */
+@keyframes bounceInRight {
+	from, 60%, 75%, 90%, to {
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	0% {
+		opacity: 0;
+		transform: translate3d(3000px, 0, 0);
+	}
+	60% {
+		opacity: 1;
+		transform: translate3d(-25px, 0, 0);
+	}
+	75% {
+		transform: translate3d(10px, 0, 0);
+	}
+	90% {
+		transform: translate3d(-5px, 0, 0);
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.bounceInRight {
+	animation-name: bounceInRight;
+}
+
+/* Bounce In Up */
+@keyframes bounceInUp {
+	from, 60%, 75%, 90%, to {
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	0% {
+		opacity: 0;
+		transform: translate3d(0, 3000px, 0);
+	}
+	60% {
+		opacity: 1;
+		transform: translate3d(0, -20px, 0);
+	}
+	75% {
+		transform: translate3d(0, 10px, 0);
+	}
+	90% {
+		transform: translate3d(0, -5px, 0);
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.bounceInUp {
+	animation-name: bounceInUp;
+}
+
+/* Bounce In Down */
+@keyframes bounceInDown {
+	from, 60%, 75%, 90%, to {
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	0% {
+		opacity: 0;
+		transform: translate3d(0, -3000px, 0);
+	}
+	60% {
+		opacity: 1;
+		transform: translate3d(0, 25px, 0);
+	}
+	75% {
+		transform: translate3d(0, -10px, 0);
+	}
+	90% {
+		transform: translate3d(0, 5px, 0);
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.bounceInDown {
+	animation-name: bounceInDown;
+}
+
+/* Bounce In */
+@keyframes bounceIn {
+	from, 20%, 40%, 60%, 80%, to {
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	0% {
+		opacity: 0;
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+	20% {
+		transform: scale3d(1.1, 1.1, 1.1);
+	}
+	40% {
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+	60% {
+		opacity: 1;
+		transform: scale3d(1.03, 1.03, 1.03);
+	}
+	80% {
+		transform: scale3d(0.97, 0.97, 0.97);
+	}
+	to {
+		opacity: 1;
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+.bounceIn {
+	animation-duration: 0.75s;
+	animation-name: bounceIn;
+}
+
+/* Fade In */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.fadeIn {
+	animation-name: fadeIn;
+}
+
+/* Fade In Up */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 100%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.fadeInUp {
+	animation-name: fadeInUp;
+}
+
+/* Fade In Down */
+@keyframes fadeInDown {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.fadeInDown {
+	animation-name: fadeInDown;
+}
+
+/* Fade In Left */
+@keyframes fadeInLeft {
+	from {
+		opacity: 0;
+		transform: translate3d(-100%, 0, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.fadeInLeft {
+	animation-name: fadeInLeft;
+}
+
+/* Fade In Right */
+@keyframes fadeInRight {
+	from {
+		opacity: 0;
+		transform: translate3d(100%, 0, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.fadeInRight {
+	animation-name: fadeInRight;
+}
+
+/* Slide In Up */
+@keyframes slideInUp {
+	from {
+		transform: translate3d(0, 100%, 0);
+		visibility: visible;
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.slideInUp {
+	animation-name: slideInUp;
+}
+
+/* Slide In Down */
+@keyframes slideInDown {
+	from {
+		transform: translate3d(0, -100%, 0);
+		visibility: visible;
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.slideInDown {
+	animation-name: slideInDown;
+}
+
+/* Zoom In */
+@keyframes zoomIn {
+	from {
+		opacity: 0;
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+.zoomIn {
+	animation-name: zoomIn;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 768px) {
+	.kfc-recent-news {
+		grid-template-columns: 1fr;
+	}
+
+	.wp-block-table {
+		overflow-x: auto;
+		display: block;
+	}
+
+	.courses-table {
+		min-width: 600px;
+	}
+}
+
+/* ==========================================================================
+   WooCommerce Layout Fixes
+   ========================================================================== */
+
+/* Remove WooCommerce block max-width restrictions */
+.wc-block-cart,
+.wc-block-checkout,
+.wp-block-woocommerce-cart,
+.wp-block-woocommerce-checkout,
+.wc-block-components-main {
+	max-width: 100% !important;
+}
+
+/* Override WooCommerce page max-width restrictions */
+.woocommerce-account main .woocommerce,
+.woocommerce-cart main .woocommerce,
+.woocommerce-checkout main .woocommerce {
+	max-width: 100% !important;
+}
+
+/* WooCommerce coupon and gift card input styling */
+.wc-block-components-totals-coupon__input .wc-block-components-text-input input,
+.wc-block-components-gift-card-input__input .wc-block-components-text-input input,
+.woocommerce-cart .coupon input[type="text"],
+.wc-block-cart input[type="text"],
+#pwgc-redeem-gift-card-number {
+	height: 42px !important;
+	padding: 8px 12px !important;
+	font-size: 15px !important;
+	line-height: 1.2 !important;
+	box-sizing: border-box !important;
+}
+
+/* Match apply button height to input fields */
+.wc-block-components-totals-coupon__button,
+.wc-block-components-gift-card-input__button,
+#pwgc-redeem-button {
+	height: 42px !important;
+}
+
+/* Gift card input - inline layout */
+#pwgc-redeem-gift-card-number {
+	width: 200px !important;
+	display: inline-block !important;
+	vertical-align: middle !important;
+	margin-right: 10px !important;
+	margin-bottom: 0 !important;
+}
+
+#pwgc-redeem-button {
+	display: inline-block !important;
+	vertical-align: middle !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+/* Container for gift card form */
+.pwgc-redeem-form,
+#pwgc-redeem-form {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	align-items: center !important;
+	gap: 10px !important;
+}
+
+/* Reduce gap between checkout billing details fields */
+.wc-block-components-address-form .wc-block-components-text-input,
+.wc-block-components-address-form .wc-block-components-country-input,
+.wc-block-components-address-form .wc-block-components-state-input,
+.wc-block-checkout__billing-fields .wc-block-components-text-input,
+.woocommerce-billing-fields__field-wrapper p {
+	margin-bottom: 12px !important;
+}
+
+.wc-block-components-address-form,
+.wc-block-checkout__billing-fields {
+	gap: 12px !important;
+}
+
+/* Reduce gap between labels and input fields */
+.wc-block-components-text-input label,
+.wc-block-components-country-input label,
+.wc-block-components-state-input label,
+.wc-block-checkout label {
+	margin-bottom: 2px !important;
+}
+
+.wc-block-components-text-input,
+.wc-block-components-country-input,
+.wc-block-components-state-input {
+	gap: 2px !important;
+}
+
+/* Hide automatic page title on WooCommerce pages - add title in page content instead */
+.woocommerce-cart .wp-block-post-title,
+.woocommerce-checkout .wp-block-post-title,
+.woocommerce-account .wp-block-post-title,
+.woocommerce-cart .entry-title,
+.woocommerce-checkout .entry-title,
+.woocommerce-account .entry-title,
+.woocommerce-cart h1.wp-block-post-title,
+.woocommerce-checkout h1.wp-block-post-title,
+.woocommerce-account h1.wp-block-post-title {
+	display: none !important;
+}
+
+/* ==========================================================================
+   WooCommerce Notices - Match theme styling
+   ========================================================================== */
+
+/* WooCommerce Block notices (modern) */
+.wc-block-components-notice-banner,
+.wc-block-components-notice-banner.is-success,
+.wc-block-components-notice-banner.is-info {
+	background-color: #e6f4ff !important;
+	border-color: #0099ff !important;
+	color: #212529 !important;
+}
+
+/* Constrain notice banner width on cart page to match entry-content */
+.woocommerce-cart .wc-block-components-notice-banner {
+	max-width: 1400px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+/* If notice is inside entry-content, inherit its width */
+.woocommerce-cart .entry-content .wc-block-components-notice-banner,
+.woocommerce-cart .wp-block-post-content .wc-block-components-notice-banner {
+	max-width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+.wc-block-components-notice-banner .wc-block-components-notice-banner__content a,
+.wc-block-components-notice-banner.is-success .wc-block-components-notice-banner__content a {
+	color: #0099ff !important;
+}
+
+.wc-block-components-notice-banner svg {
+	fill: #0099ff !important;
+}
+
+/* Classic WooCommerce notices */
+.woocommerce-message,
+.woocommerce-info {
+	background-color: #e6f4ff !important;
+	border: 1px solid #0099ff !important;
+	border-left-width: 4px !important;
+	border-top-color: #0099ff !important;
+	color: #212529 !important;
+}
+
+.woocommerce-message::before,
+.woocommerce-info::before {
+	color: #0099ff !important;
+}
+
+.woocommerce-message a.button,
+.woocommerce-info a.button {
+	background: #0099ff !important;
+	border-color: #057fd0 !important;
+	color: #ffffff !important;
+}
+
+.woocommerce-message a.button:hover,
+.woocommerce-info a.button:hover {
+	background: #019ad2 !important;
+	color: #ffffff !important;
+}
+
+/* Error messages - keep red for visibility */
+.wc-block-components-notice-banner.is-error {
+	background-color: #ffe6e6 !important;
+	border-color: #dc3545 !important;
+}
+
+.wc-block-components-notice-banner.is-error svg {
+	fill: #dc3545 !important;
+}
+
+.woocommerce-error {
+	background-color: #ffe6e6 !important;
+	border: 1px solid #dc3545 !important;
+	border-left-width: 4px !important;
+	color: #212529 !important;
+}
+
+.woocommerce-error::before {
+	color: #dc3545 !important;
+}
+
+/* ==========================================================================
+   Image Constraints - Prevent overflow
+   ========================================================================== */
+
+/* Ensure all images stay within their containers */
+.wp-block-column img,
+.wp-block-query img,
+.wp-block-post-content img,
+.wp-block-post-featured-image img,
+.entry-content img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Constrain post content to prevent overflow */
+.wp-block-post-content,
+.wp-block-post-featured-image {
+	max-width: 100%;
+	overflow: hidden;
+}
+
+/* Ensure columns don't allow content overflow */
+.wp-block-column {
+	overflow: hidden;
+	min-width: 0;
+}
+
+/* ==========================================================================
+   Sidebar Styles
+   ========================================================================== */
+
+/* Recent Posts Widget */
+.wp-block-latest-posts {
+	padding-left: 0;
+	list-style: none;
+}
+
+.wp-block-latest-posts li {
+	padding-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
+	border-bottom: 1px solid #eee;
+}
+
+.wp-block-latest-posts li:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.wp-block-latest-posts__post-date {
+	display: block;
+	color: #666;
+	font-size: 0.8rem;
+	margin-top: 0.25rem;
+}
+
+/* Archives Widget */
+.wp-block-archives-list {
+	padding-left: 0;
+	list-style: none;
+}
+
+.wp-block-archives-list li {
+	padding: 0.35rem 0;
+	border-bottom: 1px solid #eee;
+}
+
+.wp-block-archives-list li:last-child {
+	border-bottom: none;
+}
+
+.wp-block-archives-list a {
+	text-decoration: none;
+}
+
+.wp-block-archives-list a:hover {
+	text-decoration: underline;
+}
+
+/* Sidebar responsive - stack on mobile */
+@media (max-width: 782px) {
+	.wp-block-columns.alignwide {
+		flex-direction: column;
+	}
+
+	.wp-block-columns.alignwide .wp-block-column {
+		flex-basis: 100% !important;
+	}
+}
+
+/* ==========================================================================
+   Footer Styling
+   ========================================================================== */
+
+/* Footer container */
+.has-dark-background-color.has-background {
+	/* Ensure consistent styling */
+}
+
+/* Footer columns - equal height and alignment */
+.has-dark-background-color .wp-block-group.alignwide > .wp-block-group {
+	min-width: 200px;
+	align-self: flex-start;
+}
+
+/* Footer headings */
+.has-dark-background-color h4.wp-block-heading {
+	margin-bottom: 1rem;
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+
+/* Footer navigation - remove separators and clean up */
+.has-dark-background-color .wp-block-navigation {
+	gap: 0 !important;
+}
+
+.has-dark-background-color .wp-block-navigation-item {
+	border: none !important;
+	padding: 0 !important;
+}
+
+.has-dark-background-color .wp-block-navigation-item::before,
+.has-dark-background-color .wp-block-navigation-item::after {
+	display: none !important;
+}
+
+.has-dark-background-color .wp-block-navigation-item__content {
+	padding: 0.25rem 0 !important;
+	border: none !important;
+}
+
+.has-dark-background-color .wp-block-navigation a {
+	text-decoration: none;
+	transition: opacity 0.2s ease;
+}
+
+.has-dark-background-color .wp-block-navigation a:hover {
+	opacity: 0.8;
+	text-decoration: none;
+}
+
+/* Footer separator */
+.has-dark-background-color .wp-block-separator {
+	opacity: 0.2;
+	border: none;
+	height: 1px;
+	background: #ffffff;
+}
+
+/* Footer paragraphs spacing */
+.has-dark-background-color p {
+	margin-bottom: 0.75rem;
+}
+
+.has-dark-background-color p:last-child {
+	margin-bottom: 0;
+}
+
+/* Footer responsive */
+@media (max-width: 782px) {
+	.has-dark-background-color .wp-block-group.alignwide {
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.has-dark-background-color .wp-block-group.alignwide > .wp-block-group {
+		min-width: 100%;
+		text-align: center;
+	}
+
+	.has-dark-background-color .wp-block-navigation {
+		justify-content: center;
+	}
+}
+
+/* ==========================================================================
+   Single Product Page Styling
+   ========================================================================== */
+
+/* Product gallery */
+.wc-block-product-image-gallery,
+.woocommerce-product-gallery {
+	margin-bottom: 2rem;
+}
+
+.wc-block-product-image-gallery img,
+.woocommerce-product-gallery img {
+	border-radius: 8px;
+}
+
+/* Product title */
+.single-product h1.wp-block-post-title {
+	font-size: 2rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+
+/* Product price */
+.wc-block-components-product-price,
+.single-product .price {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #0099ff;
+	margin-bottom: 1rem;
+}
+
+.wc-block-components-product-price del,
+.single-product .price del {
+	color: #999;
+	font-weight: 400;
+}
+
+.wc-block-components-product-price ins,
+.single-product .price ins {
+	text-decoration: none;
+	color: #0099ff;
+}
+
+/* Course dates */
+.course-dates {
+	background: #e6f4ff;
+	border-left: 4px solid #0099ff;
+	padding: 0.75rem 1rem;
+	margin: 1rem 0;
+	border-radius: 0 4px 4px 0;
+	font-size: 1rem;
+}
+
+.course-dates strong {
+	color: #0077cc;
+}
+
+/* Product meta (categories, tags) */
+.wc-block-product-meta,
+.product_meta {
+	margin-top: 1.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid #eee;
+	font-size: 0.9rem;
+}
+
+.wc-block-product-meta a,
+.product_meta a {
+	color: #0099ff;
+}
+
+/* Add to cart form */
+.wc-block-add-to-cart-form,
+.single-product form.cart {
+	margin: 1.5rem 0;
+}
+
+.wc-block-add-to-cart-form .quantity,
+.single-product .quantity {
+	margin-right: 1rem;
+}
+
+.wc-block-add-to-cart-form input[type="number"],
+.single-product .quantity input {
+	width: 80px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	text-align: center;
+}
+
+/* Product details tabs */
+.wc-block-product-details,
+.woocommerce-tabs {
+	margin-top: 3rem;
+}
+
+.wc-block-product-details .wc-block-components-tab-panel__tab-list,
+.woocommerce-tabs ul.tabs {
+	border-bottom: 2px solid #eee;
+	margin-bottom: 1.5rem;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	gap: 0;
+}
+
+.wc-block-product-details .wc-block-components-tab-panel__tab,
+.woocommerce-tabs ul.tabs li a {
+	padding: 0.75rem 1.5rem;
+	border: none;
+	background: transparent;
+	font-weight: 500;
+	color: #666;
+	cursor: pointer;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -2px;
+	transition: all 0.2s ease;
+}
+
+.wc-block-product-details .wc-block-components-tab-panel__tab:hover,
+.woocommerce-tabs ul.tabs li a:hover {
+	color: #0099ff;
+}
+
+.wc-block-product-details .wc-block-components-tab-panel__tab--active,
+.woocommerce-tabs ul.tabs li.active a {
+	color: #0099ff;
+	border-bottom-color: #0099ff;
+}
+
+/* Reviews section */
+.woocommerce-Reviews,
+#reviews {
+	margin-top: 2rem;
+}
+
+.woocommerce-Reviews h2,
+#reviews h2 {
+	font-size: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+/* Star ratings */
+.star-rating,
+.wc-block-components-product-rating__stars {
+	color: #ffb900;
+}
+
+/* Review form */
+#review_form {
+	margin-top: 2rem;
+}
+
+#review_form textarea {
+	width: 100%;
+	padding: 1rem;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	min-height: 120px;
+}
+
+#review_form input[type="text"],
+#review_form input[type="email"] {
+	width: 100%;
+	padding: 0.75rem;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+/* Product page responsive */
+@media (max-width: 782px) {
+	.single-product .wp-block-columns {
+		flex-direction: column;
+	}
+
+	.single-product .wp-block-column {
+		flex-basis: 100% !important;
+	}
+
+	.single-product h1.wp-block-post-title {
+		font-size: 1.5rem;
+	}
+}
+
+/* ==========================================================================
+   Forminator Forms - Contact Form Styling
+   ========================================================================== */
+
+/* Form container */
+.forminator-ui.forminator-custom-form {
+	font-family: inherit;
+}
+
+/* Labels */
+.forminator-ui .forminator-label {
+	color: #212529 !important;
+	font-weight: 500 !important;
+	font-size: 0.95rem !important;
+	margin-bottom: 6px !important;
+}
+
+/* Text inputs and textareas */
+.forminator-ui .forminator-input,
+.forminator-ui .forminator-textarea,
+.forminator-ui .forminator-select,
+.forminator-ui input[type="text"],
+.forminator-ui input[type="email"],
+.forminator-ui input[type="tel"],
+.forminator-ui input[type="url"],
+.forminator-ui input[type="number"],
+.forminator-ui textarea,
+.forminator-ui select {
+	background-color: #ffffff !important;
+	border: 1px solid #ddd !important;
+	border-radius: 6px !important;
+	padding: 12px 14px !important;
+	font-size: 1rem !important;
+	color: #212529 !important;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Input focus state */
+.forminator-ui .forminator-input:focus,
+.forminator-ui .forminator-textarea:focus,
+.forminator-ui .forminator-select:focus,
+.forminator-ui input:focus,
+.forminator-ui textarea:focus,
+.forminator-ui select:focus {
+	border-color: #0099ff !important;
+	box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.15) !important;
+	outline: none !important;
+}
+
+/* Placeholder text */
+.forminator-ui .forminator-input::placeholder,
+.forminator-ui .forminator-textarea::placeholder,
+.forminator-ui input::placeholder,
+.forminator-ui textarea::placeholder {
+	color: #999 !important;
+}
+
+/* Submit button */
+.forminator-ui .forminator-button,
+.forminator-ui .forminator-button-submit,
+.forminator-ui button[type="submit"] {
+	background: linear-gradient(135deg, #0099ff 0%, #0077cc 100%) !important;
+	border: none !important;
+	color: #ffffff !important;
+	padding: 12px 28px !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.5px !important;
+	text-transform: uppercase !important;
+	border-radius: 6px !important;
+	box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3) !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease !important;
+}
+
+/* Submit button hover */
+.forminator-ui .forminator-button:hover,
+.forminator-ui .forminator-button-submit:hover,
+.forminator-ui button[type="submit"]:hover {
+	background: linear-gradient(135deg, #0088ee 0%, #0066bb 100%) !important;
+	box-shadow: 0 4px 12px rgba(0, 153, 255, 0.4) !important;
+	transform: translateY(-1px) !important;
+}
+
+/* Submit button active */
+.forminator-ui .forminator-button:active,
+.forminator-ui .forminator-button-submit:active,
+.forminator-ui button[type="submit"]:active {
+	transform: translateY(0) !important;
+}
+
+/* Error messages */
+.forminator-ui .forminator-error-message {
+	color: #dc3545 !important;
+	font-size: 0.85rem !important;
+	margin-top: 4px !important;
+}
+
+/* Success message */
+.forminator-ui .forminator-response-message.forminator-success {
+	background-color: #d4edda !important;
+	border: 1px solid #c3e6cb !important;
+	color: #155724 !important;
+	padding: 1rem !important;
+	border-radius: 6px !important;
+}
+
+/* Error response */
+.forminator-ui .forminator-response-message.forminator-error {
+	background-color: #f8d7da !important;
+	border: 1px solid #f5c6cb !important;
+	color: #721c24 !important;
+	padding: 1rem !important;
+	border-radius: 6px !important;
+}
+
+/* Required field asterisk */
+.forminator-ui .forminator-required {
+	color: #dc3545 !important;
+}
+
+/* Field spacing */
+.forminator-ui .forminator-field {
+	margin-bottom: 1.25rem !important;
+}
+
+/* Radio and checkbox styling */
+.forminator-ui .forminator-radio input[type="radio"],
+.forminator-ui .forminator-checkbox input[type="checkbox"] {
+	accent-color: #0099ff !important;
+}
+
+.forminator-ui .forminator-radio label,
+.forminator-ui .forminator-checkbox label {
+	color: #212529 !important;
+}
+
+/* ==========================================================================
+   MailPoet Subscription Form
+   ========================================================================== */
+
+/* Form container */
+.mailpoet_form {
+	font-family: inherit !important;
+}
+
+/* Heading */
+.mailpoet_form .mailpoet-heading {
+	color: #0099ff !important;
+	font-family: inherit !important;
+}
+
+/* Paragraphs */
+.mailpoet_form .mailpoet_form_paragraph {
+	font-family: inherit !important;
+	color: #212529 !important;
+}
+
+/* Email input */
+.mailpoet_form input[type="email"].mailpoet_text {
+	background-color: #ffffff !important;
+	border: 1px solid #ddd !important;
+	border-radius: 6px !important;
+	padding: 12px 14px !important;
+	font-size: 1rem !important;
+	color: #212529 !important;
+	font-family: inherit !important;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+	height: auto !important;
+}
+
+/* Email input focus */
+.mailpoet_form input[type="email"].mailpoet_text:focus {
+	border-color: #0099ff !important;
+	box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.15) !important;
+	outline: none !important;
+}
+
+/* Email input placeholder */
+.mailpoet_form input[type="email"].mailpoet_text::placeholder {
+	color: #999 !important;
+}
+
+/* Submit button - high specificity to override inline styles */
+.mailpoet_form.mailpoet_form_form input[type="submit"].mailpoet_submit[data-automation-id="subscribe-submit-button"][data-font-family],
+.mailpoet_form.mailpoet_form_form input[type="submit"].mailpoet_submit[data-automation-id="subscribe-submit-button"],
+.mailpoet_form input[type="submit"].mailpoet_submit {
+	background: linear-gradient(135deg, #0099ff 0%, #0077cc 100%) !important;
+	background-color: #0099ff !important;
+	border: none !important;
+	border-style: none !important;
+	border-width: 0px !important;
+	border-color: transparent !important;
+	-webkit-border-radius: 6px !important;
+	-moz-border-radius: 6px !important;
+	border-radius: 6px !important;
+	border-top-left-radius: 6px !important;
+	border-top-right-radius: 6px !important;
+	border-bottom-left-radius: 6px !important;
+	border-bottom-right-radius: 6px !important;
+	color: #ffffff !important;
+	padding: 12px 28px !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.5px !important;
+	text-transform: uppercase !important;
+	box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3) !important;
+	text-shadow: none !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease !important;
+	font-family: inherit !important;
+	line-height: 1.4 !important;
+	height: auto !important;
+	display: inline-block !important;
+	text-decoration: none !important;
+}
+
+/* Submit button hover */
+.mailpoet_form.mailpoet_form_form input[type="submit"].mailpoet_submit[data-automation-id="subscribe-submit-button"]:hover,
+.mailpoet_form input[type="submit"].mailpoet_submit:hover {
+	background: linear-gradient(135deg, #0088ee 0%, #0066bb 100%) !important;
+	background-color: #0088ee !important;
+	box-shadow: 0 4px 12px rgba(0, 153, 255, 0.4) !important;
+	transform: translateY(-1px) !important;
+}
+
+/* Submit button active */
+.mailpoet_form.mailpoet_form_form input[type="submit"].mailpoet_submit[data-automation-id="subscribe-submit-button"]:active,
+.mailpoet_form input[type="submit"].mailpoet_submit:active {
+	transform: translateY(0) !important;
+}
+
+/* Checkboxes */
+.mailpoet_form .mailpoet_checkbox {
+	accent-color: #0099ff !important;
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+}
+
+/* Checkbox labels */
+.mailpoet_form .mailpoet_checkbox_label {
+	color: #212529 !important;
+	font-family: inherit !important;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 8px !important;
+	cursor: pointer;
+}
+
+/* Legend */
+.mailpoet_form .mailpoet_segment_label {
+	color: #212529 !important;
+	font-weight: 500 !important;
+	font-family: inherit !important;
+	margin-bottom: 12px !important;
+}
+
+/* Fieldset */
+.mailpoet_form fieldset {
+	border: none !important;
+	padding: 0 !important;
+	margin: 0 0 1rem 0 !important;
+}
+
+/* Error messages */
+.mailpoet_form .parsley-errors-list,
+.mailpoet_form .mailpoet_validate_error {
+	color: #dc3545 !important;
+	font-size: 0.85rem !important;
+	margin-top: 4px !important;
+	list-style: none !important;
+	padding: 0 !important;
+}
+
+/* Success message */
+.mailpoet_form .mailpoet_validate_success {
+	background-color: #d4edda !important;
+	border: 1px solid #c3e6cb !important;
+	color: #155724 !important;
+	padding: 1rem !important;
+	border-radius: 6px !important;
+	margin-top: 1rem !important;
+}
+
+/* Form columns spacing */
+.mailpoet_form .mailpoet_paragraph {
+	margin-bottom: 1rem !important;
+}
+
+/* Links in form */
+.mailpoet_form a {
+	color: #0099ff !important;
+	text-decoration: none !important;
+}
+
+.mailpoet_form a:hover {
+	color: #0077cc !important;
+	text-decoration: underline !important;
+}
+
+/* ==========================================================================
+   Spotlight Instagram Feed - Follow Button
+   ========================================================================== */
+
+.DesignedButton__button.FollowButton,
+button.FollowButton {
+	background: linear-gradient(135deg, #0099ff 0%, #0077cc 100%) !important;
+	border: none !important;
+	color: #ffffff !important;
+	padding: 12px 28px !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.5px !important;
+	text-transform: uppercase !important;
+	border-radius: 6px !important;
+	box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3) !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease !important;
+}
+
+.DesignedButton__button.FollowButton:hover,
+button.FollowButton:hover {
+	background: linear-gradient(135deg, #0088ee 0%, #0066bb 100%) !important;
+	box-shadow: 0 4px 12px rgba(0, 153, 255, 0.4) !important;
+	transform: translateY(-1px) !important;
+}
+
+.DesignedButton__button.FollowButton:active,
+button.FollowButton:active {
+	transform: translateY(0) !important;
+}
+
+/* ==========================================================================
+   Checkout Page - Waiver Notice
+   ========================================================================== */
+
+/* Waiver notice styling */
+.kfc-waiver-notice {
+	margin-top: 0.5rem !important;
+	margin-bottom: 1rem !important;
+	clear: both !important;
+	display: block !important;
+	width: 100% !important;
+}
+
+/* Ensure gift card form displays below */
+.woocommerce-checkout .woocommerce-form-coupon-toggle {
+	clear: both !important;
+	display: block !important;
+	width: 100% !important;
+	margin-top: 1rem !important;
+}
+
+/* ==========================================================================
+   Footer - Navigation Links with Checkmark Icons
+   ========================================================================== */
+
+/* Add checkmark before footer navigation links */
+.wp-block-group.has-dark-background-color .wp-block-navigation .wp-block-navigation-item a::before {
+	content: "✓";
+	display: inline-block;
+	margin-right: 8px;
+	color: #0099ff;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+/* Hover effect on checkmark */
+.wp-block-group.has-dark-background-color .wp-block-navigation .wp-block-navigation-item a:hover::before {
+	color: #ffffff;
+}
+
+/* ==========================================================================
+   Footer Social Media Icons
+   ========================================================================== */
+
+/* Social links container */
+.footer-social-links {
+	margin-top: 0.5rem !important;
+}
+
+/* Individual social link */
+.footer-social-links .wp-social-link {
+	transition: all 0.3s ease !important;
+}
+
+/* Social link hover effect - scale up and lift with color change */
+.footer-social-links .wp-social-link:hover {
+	transform: translateY(-4px) scale(1.15) !important;
+	background-color: #0099ff !important;
+}
+
+/* Social link active state */
+.footer-social-links .wp-social-link:active {
+	transform: translateY(-2px) scale(1.1) !important;
+}
+
+/* ==========================================================================
+   Team Member Pattern
+   ========================================================================== */
+
+/* Team member card styling */
+.team-member-card {
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
+}
+
+.team-member-card:hover {
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+	transform: translateY(-2px);
+}
+
+/* Team member photo styling */
+.team-member-photo img {
+	border-radius: 8px;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Ensure photo maintains aspect ratio */
+.team-member-photo {
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+/* Team member responsive */
+@media (max-width: 782px) {
+	.team-member-card .wp-block-columns {
+		flex-direction: column;
+	}
+
+	.team-member-card .wp-block-column {
+		flex-basis: 100% !important;
+	}
+
+	.team-member-photo {
+		margin-bottom: 1.5rem;
+	}
+}
+
+/* ==========================================================================
+   Hero Content Pattern - Image with Zoom Animation
+   ========================================================================== */
+
+/* Zoom animation for hero image */
+@keyframes heroZoom {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.1);
+	}
+}
+
+/* Apply zoom animation to cover image */
+.hero-image-zoom .wp-block-cover__image-background {
+	animation: heroZoom 20s ease-in-out infinite alternate;
+	transform-origin: center center;
+}
+
+/* Ensure cover fills height */
+.hero-image-zoom {
+	height: 100%;
+	min-height: 500px;
+}
+
+/* Ensure columns stretch to equal height for hero content */
+.wp-block-group.has-navy-background-color > .wp-block-columns.alignfull {
+	min-height: 500px;
+}
+
+/* Hero content responsive */
+@media (max-width: 782px) {
+	.hero-image-zoom {
+		min-height: 300px;
+	}
+
+	.wp-block-group.has-navy-background-color > .wp-block-columns.alignfull {
+		min-height: auto;
+	}
+}
+
+/* ==========================================================================
+   Hero Video Pattern
+   ========================================================================== */
+
+/* Video container - full height */
+.hero-video {
+	margin: 0 !important;
+	height: 100%;
+	min-height: 500px;
+}
+
+.hero-video video {
+	width: 100%;
+	height: 100%;
+	min-height: 500px;
+	object-fit: cover;
+}
+
+/* Ensure columns stretch to equal height */
+.wp-block-group.has-navy-background-color > .wp-block-columns {
+	min-height: 500px;
+}
+
+.wp-block-group.has-navy-background-color > .wp-block-columns > .wp-block-column:first-child {
+	display: flex;
+}
+
+.wp-block-group.has-navy-background-color > .wp-block-columns > .wp-block-column:first-child .hero-video {
+	flex: 1;
+	display: flex;
+}
+
+.wp-block-group.has-navy-background-color > .wp-block-columns > .wp-block-column:first-child .hero-video video {
+	flex: 1;
+}
+
+/* Hero text styling */
+.has-navy-background-color .wp-block-heading {
+	line-height: 1.2;
+}
+
+/* Outline button on dark/navy background */
+.has-navy-background-color .wp-block-button.is-style-outline .wp-block-button__link,
+.has-dark-background-color .wp-block-button.is-style-outline .wp-block-button__link {
+	border: 2px solid #ffffff !important;
+	background: transparent !important;
+	box-shadow: none !important;
+}
+
+.has-navy-background-color .wp-block-button.is-style-outline .wp-block-button__link:hover,
+.has-dark-background-color .wp-block-button.is-style-outline .wp-block-button__link:hover {
+	background: rgba(255, 255, 255, 0.1) !important;
+	transform: translateY(-1px) !important;
+}
+
+/* Hero responsive */
+@media (max-width: 782px) {
+	.hero-video,
+	.hero-video video {
+		min-height: 300px;
+	}
+
+	.wp-block-group.has-navy-background-color > .wp-block-columns {
+		min-height: auto;
+		flex-direction: column;
+	}
+
+	.wp-block-group.has-navy-background-color > .wp-block-columns > .wp-block-column {
+		flex-basis: 100% !important;
+	}
+
+	.has-navy-background-color .wp-block-heading.has-xx-large-font-size {
+		font-size: 1.75rem !important;
+	}
+}
