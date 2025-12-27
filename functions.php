@@ -366,6 +366,24 @@ function kfc_register_block_patterns() {
 			)
 		);
 	}
+
+	// Register Schedule pattern manually
+	$schedule_file = get_theme_file_path( 'patterns/schedule.php' );
+	if ( file_exists( $schedule_file ) ) {
+		ob_start();
+		include $schedule_file;
+		$schedule_pattern = ob_get_clean();
+
+		register_block_pattern(
+			'kfc-theme/schedule',
+			array(
+				'title'       => __( 'Weekly Schedule', 'kfc-theme' ),
+				'description' => __( 'Weekly training schedule for Monday and Tuesday', 'kfc-theme' ),
+				'content'     => $schedule_pattern,
+				'categories'  => array( 'featured', 'kfc-theme' ),
+			)
+		);
+	}
 }
 add_action( 'init', 'kfc_register_block_patterns' );
 
@@ -380,9 +398,9 @@ function kfc_add_waiver_notice_checkout() {
 add_action( 'woocommerce_checkout_after_terms_and_conditions', 'kfc_add_waiver_notice_checkout' );
 
 /**
- * Add JavaScript to fix MailPoet button border radius
+ * Add JavaScript to fix button styles with inline styles
  */
-function kfc_mailpoet_button_fix() {
+function kfc_button_style_fix() {
 	?>
 	<script>
 	document.addEventListener('DOMContentLoaded', function() {
@@ -395,8 +413,18 @@ function kfc_mailpoet_button_fix() {
 			button.style.setProperty('border-bottom-left-radius', '6px', 'important');
 			button.style.setProperty('border-bottom-right-radius', '6px', 'important');
 		});
+
+		// Fix Instagram Load More button border radius
+		var loadMoreButtons = document.querySelectorAll('.LoadMoreButton');
+		loadMoreButtons.forEach(function(button) {
+			button.style.setProperty('border-radius', '6px', 'important');
+			button.style.setProperty('border-top-left-radius', '6px', 'important');
+			button.style.setProperty('border-top-right-radius', '6px', 'important');
+			button.style.setProperty('border-bottom-left-radius', '6px', 'important');
+			button.style.setProperty('border-bottom-right-radius', '6px', 'important');
+		});
 	});
 	</script>
 	<?php
 }
-add_action( 'wp_footer', 'kfc_mailpoet_button_fix' );
+add_action( 'wp_footer', 'kfc_button_style_fix' );

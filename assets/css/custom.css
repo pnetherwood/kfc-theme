@@ -1619,9 +1619,55 @@ body.home .wp-site-blocks {
 }
 
 /* ==========================================================================
-   Spotlight Instagram Feed - Follow Button
+   WP Responsive Recent Post Slider
    ========================================================================== */
 
+/* Remove gap between posts and navigation dots */
+.wrr_slider_main_wrp,
+.wrr-slider-wrapper,
+.wrr_slider_wrapper {
+	margin-bottom: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+/* Reduce gap before navigation dots */
+.wrr_slider_main_wrp .bx-controls,
+.wrr-slider-wrapper .bx-controls,
+.wrr_slider_wrapper .bx-controls {
+	margin-top: 10px !important;
+	padding-top: 0 !important;
+}
+
+/* Ensure consistent slide heights */
+.wrr_slider_main_wrp .bx-wrapper .bx-viewport,
+.wrr-slider-wrapper .bx-wrapper .bx-viewport,
+.wrr_slider_wrapper .bx-wrapper .bx-viewport {
+	margin-bottom: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+/* Target the slider container */
+.bx-wrapper {
+	margin-bottom: 10px !important;
+}
+
+/* Position dots closer to content */
+.bx-wrapper .bx-pager {
+	margin-top: 10px !important;
+	padding-top: 0 !important;
+}
+
+/* If using specific plugin classes */
+.wrr-post-slider .bx-controls,
+.wrr-recent-post-slider .bx-controls {
+	margin-top: 10px !important;
+}
+
+/* ==========================================================================
+   Spotlight Instagram Feed - Buttons
+   ========================================================================== */
+
+/* Follow Button */
 .DesignedButton__button.FollowButton,
 button.FollowButton {
 	background: linear-gradient(135deg, #0099ff 0%, #0077cc 100%) !important;
@@ -1647,6 +1693,38 @@ button.FollowButton:hover {
 
 .DesignedButton__button.FollowButton:active,
 button.FollowButton:active {
+	transform: translateY(0) !important;
+}
+
+/* Load More Button */
+.DesignedButton__button.LoadMoreButton,
+button.LoadMoreButton {
+	background: linear-gradient(135deg, #0099ff 0%, #0077cc 100%) !important;
+	border: none !important;
+	border-style: none !important;
+	border-width: 0px !important;
+	border-color: transparent !important;
+	color: #ffffff !important;
+	padding: 12px 28px !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.5px !important;
+	text-transform: uppercase !important;
+	border-radius: 6px !important;
+	box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3) !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease !important;
+}
+
+.DesignedButton__button.LoadMoreButton:hover,
+button.LoadMoreButton:hover {
+	background: linear-gradient(135deg, #0088ee 0%, #0066bb 100%) !important;
+	box-shadow: 0 4px 12px rgba(0, 153, 255, 0.4) !important;
+	transform: translateY(-1px) !important;
+}
+
+.DesignedButton__button.LoadMoreButton:active,
+button.LoadMoreButton:active {
 	transform: translateY(0) !important;
 }
 
@@ -1713,6 +1791,34 @@ button.FollowButton:active {
 /* Social link active state */
 .footer-social-links .wp-social-link:active {
 	transform: translateY(-2px) scale(1.1) !important;
+}
+
+/* ==========================================================================
+   Schedule Pattern
+   ========================================================================== */
+
+/* Schedule card styling */
+.schedule-card {
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
+}
+
+.schedule-card:hover {
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+	transform: translateY(-2px);
+}
+
+/* Schedule responsive */
+@media (max-width: 782px) {
+	.wp-block-group:has(.schedule-card) .wp-block-columns {
+		flex-direction: column;
+	}
+
+	.wp-block-group:has(.schedule-card) .wp-block-column {
+		flex-basis: 100% !important;
+	}
 }
 
 /* ==========================================================================
