@@ -1619,48 +1619,41 @@ body.home .wp-site-blocks {
 }
 
 /* ==========================================================================
-   WP Responsive Recent Post Slider
+   WP Responsive Recent Post Slider - Slick Carousel Gap Fix
    ========================================================================== */
 
-/* Remove gap between posts and navigation dots */
-.wrr_slider_main_wrp,
-.wrr-slider-wrapper,
-.wrr_slider_wrapper {
+/* Reduce bottom margin/padding on slider container */
+.wppsac-post-slider {
 	margin-bottom: 0 !important;
 	padding-bottom: 0 !important;
 }
 
-/* Reduce gap before navigation dots */
-.wrr_slider_main_wrp .bx-controls,
-.wrr-slider-wrapper .bx-controls,
-.wrr_slider_wrapper .bx-controls {
-	margin-top: 10px !important;
-	padding-top: 0 !important;
-}
-
-/* Ensure consistent slide heights */
-.wrr_slider_main_wrp .bx-wrapper .bx-viewport,
-.wrr-slider-wrapper .bx-wrapper .bx-viewport,
-.wrr_slider_wrapper .bx-wrapper .bx-viewport {
+/* Remove extra space from slides container */
+.wppsac-post-slider .slick-list {
 	margin-bottom: 0 !important;
 	padding-bottom: 0 !important;
 }
 
-/* Target the slider container */
-.bx-wrapper {
-	margin-bottom: 10px !important;
-}
-
-/* Position dots closer to content */
-.bx-wrapper .bx-pager {
-	margin-top: 10px !important;
+/* Reduce gap above navigation dots */
+.wppsac-post-slider .slick-dots {
+	margin-top: 15px !important;
 	padding-top: 0 !important;
 }
 
-/* If using specific plugin classes */
-.wrr-post-slider .bx-controls,
-.wrr-recent-post-slider .bx-controls {
-	margin-top: 10px !important;
+/* Remove bottom margin from individual slides */
+.wppsac-post-slides {
+	margin-bottom: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+/* Ensure slide content doesn't add extra spacing */
+.wppsac-post-content-position {
+	margin-bottom: 0 !important;
+}
+
+/* Target the post content wrapper */
+.wppsac-post-content-left {
+	padding-bottom: 10px !important;
 }
 
 /* ==========================================================================
@@ -1819,6 +1812,132 @@ button.LoadMoreButton:active {
 	.wp-block-group:has(.schedule-card) .wp-block-column {
 		flex-basis: 100% !important;
 	}
+}
+
+/* ==========================================================================
+   Features Pattern - CSS Grid Layout
+   ========================================================================== */
+
+/* Convert columns container to 2-column grid */
+.wp-block-group.has-light-background-color .wp-block-columns {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0;
+	align-items: stretch;
+}
+
+/* Make columns stretch full height */
+.wp-block-group.has-light-background-color .wp-block-columns .wp-block-column {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+/* Convert media-text to grid for better image handling */
+.wp-block-group.has-light-background-color .wp-block-media-text {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	align-items: stretch;
+	height: 100%;
+}
+
+/* Handle image positioning */
+.wp-block-group.has-light-background-color .wp-block-media-text figure {
+	display: flex;
+	align-items: stretch;
+	order: 1;
+}
+
+/* Image on right variant */
+.wp-block-group.has-light-background-color .wp-block-media-text.has-media-on-the-right figure {
+	order: 2;
+}
+
+.wp-block-group.has-light-background-color .wp-block-media-text.has-media-on-the-right .wp-block-media-text__content {
+	order: 1;
+}
+
+/* Make images fill their grid cell */
+.wp-block-group.has-light-background-color .wp-block-media-text figure img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Content area flex layout */
+.wp-block-group.has-light-background-color .wp-block-media-text__content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+/* Inner content group */
+.wp-block-group.has-light-background-color .wp-block-media-text__content > .wp-block-group {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+/* Push buttons to bottom */
+.wp-block-group.has-light-background-color .wp-block-media-text__content .wp-block-buttons {
+	margin-top: auto;
+}
+
+/* Responsive: Stack to single column on mobile */
+@media (max-width: 782px) {
+	.wp-block-group.has-light-background-color .wp-block-columns {
+		grid-template-columns: 1fr;
+	}
+
+	.wp-block-group.has-light-background-color .wp-block-media-text {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto;
+	}
+
+	.wp-block-group.has-light-background-color .wp-block-media-text figure,
+	.wp-block-group.has-light-background-color .wp-block-media-text .wp-block-media-text__content {
+		order: 0;
+	}
+}
+
+/* ==========================================================================
+   Features Pattern - Outline Button Override
+   ========================================================================== */
+
+/* Preserve outline button style in features pattern */
+.wp-block-group.has-light-background-color .wp-block-button.is-style-outline .wp-block-button__link {
+	background: transparent !important;
+	box-shadow: none !important;
+}
+
+/* White outline buttons on primary (blue) background cards */
+.wp-block-group.has-light-background-color .wp-block-media-text.has-primary-background-color .wp-block-button.is-style-outline .wp-block-button__link,
+.wp-block-group.has-light-background-color .has-primary-background-color .wp-block-button.is-style-outline .wp-block-button__link {
+	border: 2px solid #ffffff !important;
+	color: #ffffff !important;
+}
+
+.wp-block-group.has-light-background-color .wp-block-media-text.has-primary-background-color .wp-block-button.is-style-outline .wp-block-button__link:hover,
+.wp-block-group.has-light-background-color .has-primary-background-color .wp-block-button.is-style-outline .wp-block-button__link:hover {
+	background: rgba(255, 255, 255, 0.1) !important;
+	border-color: #ffffff !important;
+	color: #ffffff !important;
+}
+
+/* Dark outline buttons on white background cards */
+.wp-block-group.has-light-background-color .wp-block-media-text.has-white-background-color .wp-block-button.is-style-outline .wp-block-button__link,
+.wp-block-group.has-light-background-color .has-white-background-color .wp-block-button.is-style-outline .wp-block-button__link {
+	border: 2px solid #0099ff !important;
+	color: #0099ff !important;
+}
+
+.wp-block-group.has-light-background-color .wp-block-media-text.has-white-background-color .wp-block-button.is-style-outline .wp-block-button__link:hover,
+.wp-block-group.has-light-background-color .has-white-background-color .wp-block-button.is-style-outline .wp-block-button__link:hover {
+	background: rgba(0, 153, 255, 0.1) !important;
+	border-color: #0099ff !important;
+	color: #0099ff !important;
 }
 
 /* ==========================================================================
