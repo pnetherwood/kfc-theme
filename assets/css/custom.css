@@ -407,11 +407,53 @@ body.home .wp-site-blocks {
 }
 
 /* Navigation separators between items */
-.wp-block-navigation .wp-block-navigation-item:not(:last-child)::after {
+.wp-block-navigation .wp-block-navigation-item::after {
 	content: "|";
 	color: rgba(255, 255, 255, 0.4);
 	margin-left: 0.3rem;
+	margin-right: 0.3rem;
 	font-weight: 300;
+}
+
+/* Hide separator on last item */
+.wp-block-navigation .wp-block-navigation-item:last-child::after {
+	display: none !important;
+}
+
+/* Hide separator before cart item (whether visible or hidden) */
+.wp-block-navigation .wp-block-navigation-item + .wpmenucartli::before {
+	content: "";
+	display: none;
+}
+
+.wp-block-navigation .wp-block-navigation-item.wpmenucartli::after {
+	display: none !important;
+}
+
+/* Hide separator on the item immediately before the cart */
+.wp-block-navigation-item:not(.wpmenucartli) + .wpmenucartli {
+	margin-left: 0;
+}
+
+.wp-block-navigation .wp-block-navigation-item:nth-last-child(2)::after {
+	display: none !important;
+}
+
+/* WP Menu Cart item spacing - keep compact to prevent wrapping */
+.wp-block-navigation .wpmenucartli {
+	margin-left: 0.5rem;
+}
+
+.wp-block-navigation .wpmenucartli a {
+	white-space: nowrap;
+	padding-left: 0.5rem !important;
+	padding-right: 0.5rem !important;
+}
+
+/* Reduce cart content spacing */
+.wpmenucartli .cartcontents,
+.wpmenucartli .amount {
+	font-size: 0.85em;
 }
 
 /* Keep header on one line when space allows */
@@ -419,9 +461,91 @@ body.home .wp-site-blocks {
 	flex-wrap: nowrap;
 }
 
+/* Protect logo and site title group from shrinking */
+.wp-block-group.alignwide.is-layout-flex > .wp-block-group {
+	flex-shrink: 0;
+}
+
+/* Ensure logo maintains its size */
+.wp-block-group.alignwide.is-layout-flex .wp-block-image,
+.wp-block-group.alignwide.is-layout-flex .wp-block-image img {
+	flex-shrink: 0;
+	max-width: none;
+}
+
+/* Keep site title from wrapping */
+.wp-block-group.alignwide.is-layout-flex .wp-block-site-title {
+	flex-shrink: 0;
+	white-space: nowrap;
+}
+
+/* Force navigation to use available space and not wrap */
+.wp-block-group.alignwide.is-layout-flex .wp-block-navigation {
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+
+/* Override template flexWrap and keep navigation items on one line */
+.wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__container,
+.wp-block-navigation__responsive-container-content .wp-block-navigation__container {
+	flex-wrap: nowrap !important;
+	display: flex !important;
+	justify-content: flex-end !important;
+}
+
+/* Ensure navigation container doesn't wrap */
+.wp-block-navigation .wp-block-navigation__container {
+	flex-wrap: nowrap !important;
+}
+
+/* Progressively reduce spacing on smaller screens before allowing wrapping */
+@media (max-width: 1600px) {
+	.wp-block-navigation .wp-block-navigation-item a {
+		padding-left: 0.7rem;
+		padding-right: 0.7rem;
+		font-size: 0.95rem;
+	}
+}
+
+@media (max-width: 1400px) {
+	.wp-block-navigation .wp-block-navigation-item a {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		font-size: 0.9rem;
+	}
+
+	.wp-block-navigation .wp-block-navigation-item::after {
+		margin-left: 0.2rem;
+	}
+
+	.wpmenucartli .cartcontents,
+	.wpmenucartli .amount {
+		font-size: 0.8em;
+	}
+}
+
 @media (max-width: 1200px) {
+	.wp-block-navigation .wp-block-navigation-item a {
+		padding-left: 0.4rem;
+		padding-right: 0.4rem;
+		font-size: 0.85rem;
+	}
+
+	.wpmenucartli .cartcontents,
+	.wpmenucartli .amount {
+		font-size: 0.75em;
+	}
+}
+
+/* Only allow wrapping on very small screens or when hamburger menu activates */
+@media (max-width: 1000px) {
 	.wp-block-group.alignwide.is-layout-flex {
 		flex-wrap: wrap;
+	}
+
+	/* Allow navigation to wrap at this point */
+	.wp-block-navigation .wp-block-navigation__container {
+		flex-wrap: wrap !important;
 	}
 }
 
