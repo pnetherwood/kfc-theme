@@ -389,6 +389,10 @@ add_action( 'woocommerce_checkout_after_terms_and_conditions', 'kfc_add_waiver_n
  * Add JavaScript to fix button styles with inline styles
  */
 function kfc_button_style_fix() {
+	// Only load on the 'courses' page where these plugins are used
+	if ( ! is_page( 'courses' ) ) {
+		return;
+	}
 	?>
 	<script>
 	document.addEventListener('DOMContentLoaded', function() {
