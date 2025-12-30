@@ -58,18 +58,6 @@ function kfc_theme_scripts() {
 		array(),
 		wp_get_theme()->get( 'Version' )
 	);
-
-	// Enqueue WOW.js for scroll animations
-	wp_enqueue_script(
-		'wow-js',
-		get_theme_file_uri( 'assets/js/wow.min.js' ),
-		array(),
-		'1.1.3',
-		true
-	);
-
-	// Initialize WOW.js
-	wp_add_inline_script( 'wow-js', 'new WOW().init();' );
 }
 add_action( 'wp_enqueue_scripts', 'kfc_theme_scripts' );
 
