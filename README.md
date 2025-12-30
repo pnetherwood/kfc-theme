@@ -59,8 +59,8 @@ The theme uses the following color palette:
 - White: #ffffff
 
 ### Fonts
-- Primary Font: Kanit (Google Fonts)
-- System Font: System UI fallback
+- Primary Font: System Font Stack (-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, etc.)
+- Cross-platform native fonts for optimal performance
 
 ### Social Media
 Edit social media links in the footer via:

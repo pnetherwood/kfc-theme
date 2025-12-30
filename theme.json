@@ -79,43 +79,6 @@
 		"typography": {
 			"fontFamilies": [
 				{
-					"fontFamily": "Kanit, sans-serif",
-					"slug": "kanit",
-					"name": "Kanit",
-					"fontFace": [
-						{
-							"fontFamily": "Kanit",
-							"fontWeight": "300",
-							"fontStyle": "normal",
-							"src": ["https://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr4uPhWnVaE.woff2"]
-						},
-						{
-							"fontFamily": "Kanit",
-							"fontWeight": "400",
-							"fontStyle": "normal",
-							"src": ["https://fonts.gstatic.com/s/kanit/v15/nKKZ-Go6G5tXcraBGwA.woff2"]
-						},
-						{
-							"fontFamily": "Kanit",
-							"fontWeight": "500",
-							"fontStyle": "normal",
-							"src": ["https://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr5-PxWnVaE.woff2"]
-						},
-						{
-							"fontFamily": "Kanit",
-							"fontWeight": "600",
-							"fontStyle": "normal",
-							"src": ["https://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr5SPBWnVaE.woff2"]
-						},
-						{
-							"fontFamily": "Kanit",
-							"fontWeight": "700",
-							"fontStyle": "normal",
-							"src": ["https://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr42PRWnVaE.woff2"]
-						}
-					]
-				},
-				{
 					"fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
 					"slug": "system",
 					"name": "System Font"
@@ -160,7 +123,7 @@
 			"text": "var(--wp--preset--color--dark)"
 		},
 		"typography": {
-			"fontFamily": "var(--wp--preset--font-family--kanit)",
+			"fontFamily": "var(--wp--preset--font-family--system)",
 			"fontSize": "var(--wp--preset--font-size--medium)",
 			"lineHeight": "1.6"
 		},
