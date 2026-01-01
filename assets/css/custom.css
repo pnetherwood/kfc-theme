@@ -145,52 +145,21 @@ main input[type="submit"]:disabled {
    Tables - Course listing and general tables
    ========================================================================== */
 
-.wp-block-table table,
-table.courses-table {
+.wp-block-table table {
 	border-collapse: collapse;
 	width: 100%;
 }
 
 .wp-block-table th,
-.wp-block-table td,
-table.courses-table th,
-table.courses-table td {
+.wp-block-table td {
 	padding: 12px;
 	border: 1px solid #ddd;
 	text-align: left;
 }
 
-.wp-block-table th,
-table.courses-table th {
+.wp-block-table th {
 	background-color: #f2f2f2;
 	font-weight: bold;
-}
-
-/* Course status colors */
-.course-status-available {
-	color: #28a745;
-	font-weight: 600;
-}
-
-.course-status-full {
-	color: #dc3545;
-	font-weight: 600;
-}
-
-.course-status-inprogress {
-	color: #ff6600;
-	font-weight: 600;
-}
-
-.course-status-completed {
-	color: #28a745;
-	font-weight: 600;
-}
-
-/* Course thumbnail in table */
-.courses-table .course-thumbnail img {
-	max-width: 70px;
-	height: auto;
 }
 
 /* ==========================================================================
@@ -427,10 +396,11 @@ body.home .wp-site-blocks {
 
 /* Main navigation items */
 .wp-block-navigation .wp-block-navigation-item a {
-	padding: 6px 8px;
+	padding: 8px 12px;
 	border-radius: 4px;
 	transition: background-color 0.2s ease;
 	white-space: nowrap;
+	font-size: 1rem;
 }
 
 .wp-block-navigation .wp-block-navigation-item a:hover {
@@ -504,10 +474,9 @@ body.home .wp-site-blocks {
 	max-width: none;
 }
 
-/* Keep site title from wrapping */
+/* Hide site title */
 .wp-block-group.alignwide.is-layout-flex .wp-block-site-title {
-	flex-shrink: 0;
-	white-space: nowrap;
+	display: none !important;
 }
 
 /* Force navigation to use available space and not wrap */
@@ -530,53 +499,41 @@ body.home .wp-site-blocks {
 }
 
 /* Progressively reduce spacing on smaller screens before allowing wrapping */
-@media (max-width: 1600px) {
-	.wp-block-navigation .wp-block-navigation-item a {
-		padding-left: 0.7rem;
-		padding-right: 0.7rem;
-		font-size: 0.95rem;
-	}
-}
-
 @media (max-width: 1400px) {
 	.wp-block-navigation .wp-block-navigation-item a {
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-		font-size: 0.9rem;
-	}
-
-	.wp-block-navigation .wp-block-navigation-item::after {
-		margin-left: 0.2rem;
-	}
-
-	.wpmenucartli .cartcontents,
-	.wpmenucartli .amount {
-		font-size: 0.8em;
+		padding-left: 0.8rem;
+		padding-right: 0.8rem;
+		font-size: 0.95rem;
 	}
 }
 
 @media (max-width: 1200px) {
 	.wp-block-navigation .wp-block-navigation-item a {
-		padding-left: 0.4rem;
-		padding-right: 0.4rem;
-		font-size: 0.85rem;
+		padding-left: 0.6rem;
+		padding-right: 0.6rem;
+		font-size: 0.9rem;
 	}
 
 	.wpmenucartli .cartcontents,
 	.wpmenucartli .amount {
-		font-size: 0.75em;
+		font-size: 0.85em;
 	}
 }
 
-/* Only allow wrapping on very small screens or when hamburger menu activates */
-@media (max-width: 1000px) {
-	.wp-block-group.alignwide.is-layout-flex {
-		flex-wrap: wrap;
+/* Force hamburger menu on tablets to prevent wrapping/truncation */
+@media (max-width: 1100px) {
+	/* Hide regular navigation menu */
+	.wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__responsive-container-content {
+		display: none !important;
 	}
 
-	/* Allow navigation to wrap at this point */
-	.wp-block-navigation .wp-block-navigation__container {
-		flex-wrap: wrap !important;
+	.wp-block-navigation__responsive-container:not(.is-menu-open) .wp-block-navigation__container {
+		display: none !important;
+	}
+
+	/* Show hamburger button */
+	.wp-block-navigation__responsive-container-open {
+		display: flex !important;
 	}
 }
 
@@ -603,10 +560,316 @@ body.home .wp-site-blocks {
 	padding: 10px 0;
 }
 
-/* Hide separators on mobile */
-@media (max-width: 782px) {
+/* ==========================================================================
+   Mobile/Tablet Optimizations (1100px and below - hamburger menu active)
+   ========================================================================== */
+@media (max-width: 1100px) {
+	/* Hide navigation separators on mobile */
 	.wp-block-navigation .wp-block-navigation-item::after {
 		display: none;
+	}
+
+	/* Header layout - logo left, menu right */
+	.wp-block-group.alignwide.is-layout-flex {
+		justify-content: space-between !important;
+		flex-direction: row !important;
+		align-items: center !important;
+		padding: 0.5rem 1rem !important;
+	}
+
+	/* Logo container */
+	.wp-block-group.alignwide.is-layout-flex > .wp-block-group {
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 0;
+	}
+
+	/* Logo sizing for mobile */
+	.wp-block-group.alignwide.is-layout-flex .wp-block-image img {
+		width: 60px !important;
+		height: auto;
+	}
+
+	/* Navigation container - align to right */
+	.wp-block-group.alignwide.is-layout-flex .wp-block-navigation {
+		width: auto;
+		justify-content: flex-end;
+	}
+
+	/* Hamburger menu - two line icon */
+	.wp-block-navigation__responsive-container-open svg,
+	button.wp-block-navigation__responsive-container-open svg {
+		display: none;
+	}
+
+	.wp-block-navigation__responsive-container-open,
+	button.wp-block-navigation__responsive-container-open {
+		position: relative;
+		width: 32px;
+		height: 32px;
+		padding: 0;
+	}
+
+	.wp-block-navigation__responsive-container-open::before,
+	.wp-block-navigation__responsive-container-open::after,
+	button.wp-block-navigation__responsive-container-open::before,
+	button.wp-block-navigation__responsive-container-open::after {
+		content: '';
+		position: absolute;
+		left: 4px;
+		right: 4px;
+		height: 3px;
+		background-color: #ffffff;
+		border-radius: 2px;
+		transition: all 0.3s ease;
+	}
+
+	.wp-block-navigation__responsive-container-open::before,
+	button.wp-block-navigation__responsive-container-open::before {
+		top: 10px;
+	}
+
+	.wp-block-navigation__responsive-container-open::after,
+	button.wp-block-navigation__responsive-container-open::after {
+		bottom: 10px;
+	}
+
+	/* Mobile menu overlay - add proper padding */
+	.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+
+	.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item a {
+		padding: 12px 1.5rem;
+	}
+
+	/* Ensure content containers take full width on mobile (exclude header) */
+	.wp-block-group:not(.alignwide):not(.is-layout-flex),
+	.wp-block-group.is-layout-constrained:not(.alignwide),
+	.wp-block-group.has-global-padding:not(.alignwide):not(.is-layout-flex) {
+		width: 100% !important;
+		max-width: 100% !important;
+		box-sizing: border-box !important;
+		padding-left: 1rem !important;
+		padding-right: 1rem !important;
+	}
+
+	/* Reduce heading sizes for mobile */
+	h1,
+	.wp-block-post-title,
+	h1.wp-block-heading {
+		font-size: 1.75rem !important;
+		line-height: 1.2;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+
+	h2,
+	h2.wp-block-heading,
+	.has-xx-large-font-size,
+	.has-x-large-font-size,
+	.has-large-font-size {
+		font-size: 1.5rem !important;
+		line-height: 1.3 !important;
+		word-wrap: break-word !important;
+		overflow-wrap: break-word !important;
+		max-width: 100% !important;
+		white-space: normal !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	h3,
+	h3.wp-block-heading {
+		font-size: 1.25rem !important;
+		line-height: 1.4;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		max-width: 100%;
+	}
+
+	/* Hero section H1 - prevent overflow */
+	.wp-block-group.alignfull h1,
+	.wp-block-cover h1 {
+		font-size: 1.5rem !important;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		max-width: 100%;
+	}
+
+	/* Hero section paragraphs - prevent truncation */
+	.wp-block-group.alignfull p,
+	.wp-block-cover p,
+	.wp-block-cover__inner-container p {
+		padding-left: 1rem;
+		padding-right: 1rem;
+		max-width: 100%;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+
+	/* Remove padding from hero block images - make them flush */
+	.wp-block-group.alignfull figure,
+	.wp-block-group.alignfull img,
+	.wp-block-cover figure,
+	.wp-block-cover img {
+		padding: 0 !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+
+	/* Full-width columns on mobile - prevent text truncation */
+	.wp-block-columns.alignfull {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	/* Remove padding from parent container when it contains alignfull columns or cover blocks */
+	.wp-block-group:has(.wp-block-columns.alignfull),
+	.wp-block-group:has(.wp-block-cover) {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	/* Cover blocks should be edge-to-edge on mobile */
+	.wp-block-cover {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+
+	.wp-block-columns.alignfull .wp-block-column {
+		max-width: 100% !important;
+		box-sizing: border-box !important;
+	}
+
+	/* Remove padding from column containing images (video/image column) */
+	.wp-block-columns.alignfull .wp-block-column:has(figure),
+	.wp-block-columns.alignfull .wp-block-column:has(.wp-block-embed),
+	.wp-block-columns.alignfull .wp-block-column:has(img),
+	.wp-block-columns .wp-block-column:has(.wp-block-cover) {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	/* Ensure images in columns are truly flush */
+	.wp-block-columns.alignfull .wp-block-column figure,
+	.wp-block-columns.alignfull .wp-block-column img {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	/* Keep padding only on text content columns */
+	.wp-block-columns.alignfull .wp-block-column:has(.wp-block-group) {
+		padding-left: 1rem !important;
+		padding-right: 1rem !important;
+	}
+
+
+	/* Ensure paragraphs within columns don't overflow */
+	.wp-block-columns.alignfull .wp-block-column p,
+	.wp-block-columns.alignfull .wp-block-column h1,
+	.wp-block-columns.alignfull .wp-block-column h2,
+	.wp-block-columns.alignfull .wp-block-column h3 {
+		max-width: 100% !important;
+		width: 100% !important;
+		word-wrap: break-word !important;
+		overflow-wrap: break-word !important;
+		white-space: normal !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	/* Constrained groups within columns need proper width */
+	.wp-block-columns.alignfull .wp-block-group.has-global-padding,
+	.wp-block-columns.alignfull .wp-block-group.is-layout-constrained {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		max-width: 100% !important;
+		width: 100% !important;
+		box-sizing: border-box !important;
+	}
+
+	/* Add padding to page content on mobile */
+	.wp-block-group.alignwide,
+	.wp-site-blocks > * {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	/* Remove padding from header and footer */
+	header,
+	footer,
+	.wp-block-template-part,
+	header .wp-block-group,
+	footer .wp-block-group {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	/* WooCommerce coupon section on mobile */
+	.wc-block-components-totals-coupon,
+	.woocommerce-cart .coupon {
+		display: flex !important;
+		flex-wrap: wrap !important;
+		gap: 0.5rem !important;
+		align-items: stretch !important;
+	}
+
+	.wc-block-components-totals-coupon__input,
+	.woocommerce-cart .coupon input[type="text"] {
+		flex: 1 1 auto !important;
+		min-width: 0 !important;
+		width: auto !important;
+	}
+
+	.wc-block-components-totals-coupon__button,
+	.woocommerce-cart .coupon button,
+	.woocommerce-cart .coupon input[type="submit"] {
+		flex: 0 0 auto !important;
+		white-space: nowrap !important;
+		min-width: fit-content !important;
+	}
+
+	/* Remove excess padding from cart totals on mobile */
+	.cart_totals {
+		padding: 0 !important;
+	}
+
+	/* Gift card form on mobile - stack vertically */
+	#pwgc-redeem-gift-card-form,
+	#pwgc-redeem-form,
+	.pwgc-redeem-form {
+		width: 100% !important;
+		margin-bottom: 2rem !important;
+	}
+
+	#pwgc-redeem-gift-card-number {
+		width: 100% !important;
+		display: block !important;
+		margin-right: 0 !important;
+		margin-bottom: 0.5rem !important;
+		box-sizing: border-box !important;
+	}
+
+	#pwgc-redeem-button {
+		width: 100% !important;
+		display: block !important;
+		margin-top: 0.5rem !important;
+		box-sizing: border-box !important;
+	}
+}
+
+/* ==========================================================================
+   Mobile-Only Optimizations (600px and below)
+   ========================================================================== */
+@media (max-width: 600px) {
+	/* Center buttons in hero content and features on mobile */
+	.wp-block-columns.alignfull .wp-block-buttons,
+	.wp-block-group.has-light-background-color .wp-block-buttons {
+		justify-content: center !important;
 	}
 }
 
@@ -622,10 +885,6 @@ body.home .wp-site-blocks {
 	.wp-block-table {
 		overflow-x: auto;
 		display: block;
-	}
-
-	.courses-table {
-		min-width: 600px;
 	}
 }
 
@@ -667,6 +926,10 @@ body.home .wp-site-blocks {
 .wc-block-components-gift-card-input__button,
 #pwgc-redeem-button {
 	height: 42px !important;
+	padding: 8px 16px !important;
+	font-size: 14px !important;
+	box-sizing: border-box !important;
+	line-height: 1.2 !important;
 }
 
 /* Gift card input - inline layout */
@@ -1126,6 +1389,65 @@ body.home .wp-site-blocks {
 .woocommerce-tabs ul.tabs li.active a {
 	color: var(--color-primary);
 	border-bottom-color: var(--color-primary);
+}
+
+/* Mobile tabs styling */
+@media (max-width: 782px) {
+	.wc-block-product-details .wc-block-components-tab-panel__tab-list,
+	.woocommerce-tabs ul.tabs {
+		flex-direction: column;
+		border-bottom: none;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	/* Remove background and padding from li elements */
+	.wc-block-product-details .wc-block-components-tab-panel__tab,
+	.woocommerce-tabs ul.tabs li {
+		width: 100%;
+		display: block;
+		margin-bottom: 0;
+		border-bottom: none;
+		background: none !important;
+		border-radius: 0 !important;
+		padding: 0 !important;
+	}
+
+	/* Style the anchor tags */
+	.woocommerce-tabs ul.tabs li a,
+	.woocommerce-tabs ul.tabs li.active a,
+	.woocommerce-tabs ul.tabs li a:hover {
+		width: 100% !important;
+		display: block !important;
+		padding: 1rem !important;
+		font-size: 1rem !important;
+		text-align: left !important;
+		border-radius: 6px !important;
+		border: none !important;
+		border-bottom: none !important;
+		margin: 0 !important;
+		text-decoration: none !important;
+		box-sizing: border-box !important;
+	}
+
+	/* Default state */
+	.woocommerce-tabs ul.tabs li a {
+		background: #f5f5f5 !important;
+		color: #666 !important;
+	}
+
+	/* Hover state */
+	.woocommerce-tabs ul.tabs li a:hover {
+		background: #e0e0e0 !important;
+		color: var(--color-primary) !important;
+	}
+
+	/* Active state */
+	.woocommerce-tabs ul.tabs li.active a,
+	.woocommerce-tabs ul.tabs li.active a:hover {
+		background: var(--color-primary) !important;
+		color: #ffffff !important;
+	}
 }
 
 /* Reviews section */
@@ -1644,6 +1966,12 @@ button.LoadMoreButton:active {
    Schedule Pattern
    ========================================================================== */
 
+/* Schedule columns - ensure horizontal gap */
+.wp-block-group:has(.schedule-card) > .wp-block-columns {
+	gap: 2rem !important;
+	column-gap: 2rem !important;
+}
+
 /* Schedule card styling */
 .schedule-card {
 	border: 1px solid #e0e0e0;
@@ -1657,14 +1985,68 @@ button.LoadMoreButton:active {
 	transform: translateY(-2px);
 }
 
+/* Refine schedule typography */
+.wp-block-group:has(.schedule-card) h3 {
+	font-size: 1.125rem !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.5px;
+}
+
+/* Reduce time heading size */
+.schedule-card h4 {
+	font-size: 1.5rem !important;
+	font-weight: 700 !important;
+	margin: 0.25rem 0 !important;
+}
+
+/* Adjust label paragraph (Junior/Adult Sessions) */
+.schedule-card p:first-child {
+	font-size: 0.75rem !important;
+	letter-spacing: 1px;
+	margin-bottom: 0.25rem !important;
+}
+
+/* Adjust description paragraph */
+.schedule-card p:last-child {
+	font-size: 0.875rem !important;
+	line-height: 1.5;
+	margin-top: 0.25rem !important;
+	opacity: 0.85;
+}
+
+/* Reduce card padding for more refined look */
+.schedule-card {
+	padding: 1.5rem 1.25rem !important;
+}
+
+/* Day header padding */
+.wp-block-group:has(.schedule-card) > .wp-block-group > .wp-block-group.has-primary-background-color {
+	padding-top: 0.75rem !important;
+	padding-bottom: 0.75rem !important;
+}
+
 /* Schedule responsive */
 @media (max-width: 782px) {
-	.wp-block-group:has(.schedule-card) .wp-block-columns {
+	.wp-block-group:has(.schedule-card) > .wp-block-columns {
 		flex-direction: column;
+		gap: 1.5rem !important;
 	}
 
 	.wp-block-group:has(.schedule-card) .wp-block-column {
 		flex-basis: 100% !important;
+	}
+
+	/* Mobile refinements */
+	.wp-block-group:has(.schedule-card) h3 {
+		font-size: 1rem !important;
+	}
+
+	.schedule-card h4 {
+		font-size: 1.25rem !important;
+	}
+
+	.schedule-card {
+		padding: 1.25rem 1rem !important;
 	}
 }
 
@@ -1732,15 +2114,30 @@ button.LoadMoreButton:active {
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
+	padding-bottom: 1.5rem;
 }
 
 /* Push buttons to bottom */
 .wp-block-group.has-light-background-color .wp-block-media-text__content .wp-block-buttons {
 	margin-top: auto;
+	padding-top: 1rem;
 }
 
-/* Responsive: Stack to single column on mobile */
-@media (max-width: 782px) {
+/* Tablet: Single column grid, but keep image beside text within each item */
+@media (max-width: 1200px) and (min-width: 600px) {
+	.wp-block-group.has-light-background-color .wp-block-columns {
+		grid-template-columns: 1fr;
+	}
+
+	/* Keep image and text side by side within each item */
+	.wp-block-group.has-light-background-color .wp-block-media-text {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+	}
+}
+
+/* Mobile: Full vertical stack - image above text */
+@media (max-width: 600px) {
 	.wp-block-group.has-light-background-color .wp-block-columns {
 		grid-template-columns: 1fr;
 	}
@@ -1753,6 +2150,12 @@ button.LoadMoreButton:active {
 	.wp-block-group.has-light-background-color .wp-block-media-text figure,
 	.wp-block-group.has-light-background-color .wp-block-media-text .wp-block-media-text__content {
 		order: 0;
+	}
+
+	/* Remove padding from description paragraphs only */
+	.wp-block-group.has-light-background-color .wp-block-media-text__content p {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
 	}
 }
 
