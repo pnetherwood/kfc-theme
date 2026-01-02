@@ -2213,6 +2213,24 @@ button.LoadMoreButton:active {
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
 	}
+
+	/* Keep container padding but override the inline styles to reduce it */
+	.wp-block-group.has-light-background-color .wp-block-media-text__content > .wp-block-group {
+		padding-left: 1rem !important;
+		padding-right: 1rem !important;
+	}
+
+	/* Remove padding from the inner has-global-padding group so no double padding */
+	.wp-block-group.has-light-background-color .wp-block-media-text__content .wp-block-group.has-global-padding {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	/* Ensure paragraphs have no additional padding */
+	.wp-block-group.has-light-background-color .wp-block-media-text__content p {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
 }
 
 /* Mobile: Full vertical stack - image above text */
@@ -2231,26 +2249,20 @@ button.LoadMoreButton:active {
 		order: 0;
 	}
 
-	/* Reduce padding on media-text content wrapper */
-	.wp-block-group.has-light-background-color .wp-block-media-text__content {
-		padding-left: 0.75rem !important;
-		padding-right: 0.75rem !important;
-	}
-
-	/* Override both nested group containers - outer and inner */
-	.wp-block-group.has-light-background-color .wp-block-media-text__content .wp-block-group {
-		padding-left: 0 !important;
-		padding-right: 0 !important;
+	/* Keep container padding but override the inline styles to reduce it */
+	.wp-block-group.has-light-background-color .wp-block-media-text__content > .wp-block-group {
+		padding-left: 1rem !important;
+		padding-right: 1rem !important;
 		padding-bottom: 1rem !important;
 	}
 
-	/* Specifically target the has-global-padding inner group */
+	/* Remove padding from the inner has-global-padding group so no double padding */
 	.wp-block-group.has-light-background-color .wp-block-media-text__content .wp-block-group.has-global-padding {
 		padding-left: 0 !important;
 		padding-right: 0 !important;
 	}
 
-	/* Remove padding from description paragraphs only */
+	/* Ensure paragraphs have no additional padding */
 	.wp-block-group.has-light-background-color .wp-block-media-text__content p {
 		padding-left: 0 !important;
 		padding-right: 0 !important;
