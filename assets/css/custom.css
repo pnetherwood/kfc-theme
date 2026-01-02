@@ -2231,6 +2231,25 @@ button.LoadMoreButton:active {
 		order: 0;
 	}
 
+	/* Reduce padding on media-text content wrapper */
+	.wp-block-group.has-light-background-color .wp-block-media-text__content {
+		padding-left: 0.75rem !important;
+		padding-right: 0.75rem !important;
+	}
+
+	/* Override both nested group containers - outer and inner */
+	.wp-block-group.has-light-background-color .wp-block-media-text__content .wp-block-group {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		padding-bottom: 1rem !important;
+	}
+
+	/* Specifically target the has-global-padding inner group */
+	.wp-block-group.has-light-background-color .wp-block-media-text__content .wp-block-group.has-global-padding {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
 	/* Remove padding from description paragraphs only */
 	.wp-block-group.has-light-background-color .wp-block-media-text__content p {
 		padding-left: 0 !important;
