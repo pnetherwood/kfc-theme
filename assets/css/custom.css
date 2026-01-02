@@ -1298,17 +1298,44 @@ body.home .wp-site-blocks {
 /* Footer responsive */
 @media (max-width: 782px) {
 	.has-dark-background-color .wp-block-group.alignwide {
-		flex-direction: column;
-		gap: 2rem;
+		flex-direction: column !important;
+		gap: 2rem !important;
+		align-items: stretch !important;
 	}
 
 	.has-dark-background-color .wp-block-group.alignwide > .wp-block-group {
 		min-width: 100%;
+		width: 100%;
 		text-align: center;
+		display: flex !important;
+		flex-direction: column !important;
+		align-items: center !important;
 	}
 
 	.has-dark-background-color .wp-block-navigation {
-		justify-content: center;
+		justify-content: center !important;
+		align-items: center !important;
+	}
+
+	/* Ensure footer logo and content are centered on mobile */
+	.has-dark-background-color .wp-block-group.alignwide .wp-block-image {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	/* Center footer headings */
+	.has-dark-background-color .wp-block-group.alignwide h4 {
+		text-align: center;
+	}
+
+	/* Center footer paragraphs */
+	.has-dark-background-color .wp-block-group.alignwide p {
+		text-align: center;
+	}
+
+	/* Center social links on mobile */
+	.has-dark-background-color .footer-social-links {
+		justify-content: center !important;
 	}
 }
 
