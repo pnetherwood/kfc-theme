@@ -9,6 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Include Course Booker helper functions
+if ( file_exists( WP_PLUGIN_DIR . '/course-booker/includes/course-attribute-helpers.php' ) ) {
+	require_once WP_PLUGIN_DIR . '/course-booker/includes/course-attribute-helpers.php';
+}
+
 /**
  * Theme setup
  */
@@ -235,39 +240,66 @@ function kfc_course_dates_shortcode() {
 		return '';
 	}
 
-	$attributes = $product->get_attributes();
-	$start_time = null;
-	$end_time = null;
+	// Get schedule info using helper function
+	if ( ! function_exists( 'course_booker_get_course_schedule_info' ) ) {
+		return '';
+	}
 
-	if ( $attributes ) {
-		foreach ( $attributes as $key => $attribute ) {
-			$name = $attribute->get_name();
-			if ( $name == 'Start' || $key == 'pa_start' || $key == 'Start' ) {
-				$options = $attribute->get_options();
-				if ( ! empty( $options ) ) {
-					$start_time = strtotime( $options[0] );
-				}
+	$schedule = course_booker_get_course_schedule_info( $product );
+
+	if ( ! $schedule ) {
+		return '';
+	}
+
+	// Build output
+	$output = '<div class="course-dates">';
+
+	// For lessons, only show schedule info (no dates)
+	if ( $schedule['is_lesson'] ) {
+		if ( function_exists( 'course_booker_format_schedule_display' ) ) {
+			$schedule_text = course_booker_format_schedule_display( $schedule );
+			if ( $schedule_text ) {
+				$output .= '<div class="course-dates-row">';
+				$output .= '<span class="course-dates-label">Lesson:</span>';
+				$output .= '<span class="course-dates-value">' . esc_html( $schedule_text ) . '</span>';
+				$output .= '</div>';
 			}
-			if ( $name == 'End' || $key == 'pa_end' || $key == 'End' ) {
-				$options = $attribute->get_options();
-				if ( ! empty( $options ) ) {
-					$end_time = strtotime( $options[0] );
-				}
+		}
+	} else {
+		// For courses, show dates + schedule
+		if ( ! $schedule['start_date'] ) {
+			return '';
+		}
+
+		// Date row
+		$start_date = date( 'D jS M Y', strtotime( $schedule['start_date'] ) );
+		$end_date = date( 'D jS M Y', strtotime( $schedule['end_date'] ) );
+
+		$output .= '<div class="course-dates-row">';
+		if ( $start_date == $end_date ) {
+			$output .= '<span class="course-dates-label">Date:</span>';
+			$output .= '<span class="course-dates-value">' . esc_html( $start_date ) . '</span>';
+		} else {
+			$output .= '<span class="course-dates-label">Dates:</span>';
+			$output .= '<span class="course-dates-value">' . esc_html( $start_date . ' to ' . $end_date ) . '</span>';
+		}
+		$output .= '</div>';
+
+		// Schedule row
+		if ( function_exists( 'course_booker_format_schedule_display' ) ) {
+			$schedule_text = course_booker_format_schedule_display( $schedule );
+			if ( $schedule_text ) {
+				$output .= '<div class="course-dates-row">';
+				$output .= '<span class="course-dates-label">Schedule:</span>';
+				$output .= '<span class="course-dates-value">' . esc_html( $schedule_text ) . '</span>';
+				$output .= '</div>';
 			}
 		}
 	}
 
-	if ( ! $start_time || ! $end_time ) {
-		return '';
-	}
+	$output .= '</div>';
 
-	$start_date = date( 'D jS M Y', $start_time );
-	$end_date = date( 'D jS M Y', $end_time );
-
-	if ( $start_date == $end_date ) {
-		return '<p class="course-dates"><strong>Date:</strong> ' . esc_html( $start_date ) . '</p>';
-	}
-	return '<p class="course-dates"><strong>Dates:</strong> ' . esc_html( $start_date ) . ' to ' . esc_html( $end_date ) . '</p>';
+	return $output;
 }
 add_shortcode( 'course_dates', 'kfc_course_dates_shortcode' );
 
