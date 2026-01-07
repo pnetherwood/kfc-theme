@@ -327,6 +327,31 @@ main input[type="submit"]:disabled {
 	box-shadow: 0 0 0 2px rgba(0, 153, 255, 0.2);
 }
 
+/* Textarea fields - same style as text inputs but expandable */
+.woocommerce form .form-row textarea,
+#medical_medicine,
+#fencing_experience,
+#order_comments {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 10px;
+	min-height: 42px;
+	height: 42px;
+	resize: vertical;
+	box-sizing: border-box;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1.4;
+}
+
+.woocommerce form .form-row textarea::placeholder,
+#medical_medicine::placeholder,
+#fencing_experience::placeholder,
+#order_comments::placeholder {
+	font-size: 16px;
+}
+
 /* ==========================================================================
    MetaSlider - Remove gaps on front page
    ========================================================================== */
