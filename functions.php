@@ -374,3 +374,25 @@ function kfc_button_style_fix() {
 }
 add_action( 'wp_footer', 'kfc_button_style_fix' );
 
+/**
+ * Product Short Description Shortcode
+ * Outputs the WooCommerce product short description with HTML formatting preserved
+ */
+function kfc_product_short_description_shortcode() {
+	global $product;
+
+	if ( ! $product ) {
+		return '';
+	}
+
+	$short_description = $product->get_short_description();
+
+	if ( empty( $short_description ) ) {
+		return '';
+	}
+
+	// Return the short description with HTML preserved
+	return '<div class="woocommerce-product-details__short-description product-short-description">' . $short_description . '</div>';
+}
+add_shortcode( 'product_short_description', 'kfc_product_short_description_shortcode' );
+
