@@ -445,6 +445,25 @@ body.home .wp-site-blocks {
 	height: 0 !important;
 }
 
+/* MetaSlider - Remove padding on mobile
+   Add the class 'kfc-fullwidth-slider-mobile' to the Group block containing the slider. */
+@media (max-width: 782px) {
+	/* Remove padding from slider container */
+	.wp-block-group.kfc-fullwidth-slider-mobile,
+	.wp-block-group.kfc-fullwidth-slider-mobile.has-global-padding,
+	.wp-block-group.kfc-fullwidth-slider-mobile.is-layout-constrained {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		padding-top: 0 !important;
+		margin-top: 0 !important;
+	}
+
+	/* Remove top padding from main element when it contains the fullwidth slider */
+	main:has(.kfc-fullwidth-slider-mobile) {
+		padding-top: 0 !important;
+	}
+}
+
 /* ==========================================================================
    Navigation
    ========================================================================== */
@@ -721,10 +740,10 @@ body.home .wp-site-blocks {
 		padding: 12px 1.5rem;
 	}
 
-	/* Ensure content containers take full width on mobile (exclude header) */
-	.wp-block-group:not(.alignwide):not(.is-layout-flex),
-	.wp-block-group.is-layout-constrained:not(.alignwide),
-	.wp-block-group.has-global-padding:not(.alignwide):not(.is-layout-flex) {
+	/* Ensure content containers take full width on mobile (exclude header and fullwidth slider) */
+	.wp-block-group:not(.alignwide):not(.is-layout-flex):not(.kfc-fullwidth-slider-mobile),
+	.wp-block-group.is-layout-constrained:not(.alignwide):not(.kfc-fullwidth-slider-mobile),
+	.wp-block-group.has-global-padding:not(.alignwide):not(.is-layout-flex):not(.kfc-fullwidth-slider-mobile) {
 		width: 100% !important;
 		max-width: 100% !important;
 		box-sizing: border-box !important;
@@ -2127,9 +2146,10 @@ button.LoadMoreButton:active {
 
 /* Reduce time heading size */
 .schedule-card h4 {
-	font-size: 1.5rem !important;
+	font-size: 1rem !important;
 	font-weight: 700 !important;
 	margin: 0.25rem 0 !important;
+	white-space: nowrap;
 }
 
 /* Adjust label paragraph (Junior/Adult Sessions) */
@@ -2175,7 +2195,7 @@ button.LoadMoreButton:active {
 	}
 
 	.schedule-card h4 {
-		font-size: 1.25rem !important;
+		font-size: 1rem !important;
 	}
 
 	.schedule-card {

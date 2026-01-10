@@ -373,3 +373,4 @@ function kfc_button_style_fix() {
 	<?php
 }
 add_action( 'wp_footer', 'kfc_button_style_fix' );
+
