@@ -45,6 +45,15 @@
 }
 
 /* ==========================================================================
+   Home Page - Remove main padding
+   ========================================================================== */
+
+.home main.wp-block-group {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+/* ==========================================================================
    Buttons - Book Now / Add to Cart styling
    ========================================================================== */
 
@@ -905,6 +914,21 @@ body.home .wp-site-blocks {
 		padding-right: 0 !important;
 	}
 
+	/* Center all elements in first content block on home page (mobile only) */
+	.wp-block-post-content > .wp-block-columns.kfc-intro-section,
+	.wp-block-post-content > .wp-block-columns.kfc-intro-section * {
+		text-align: center !important;
+	}
+
+	/* Center embedded content in first block */
+	.wp-block-post-content > .wp-block-columns.kfc-intro-section .wp-block-embed,
+	.wp-block-post-content > .wp-block-columns.kfc-intro-section .wp-block-embed__wrapper,
+	.wp-block-post-content > .wp-block-columns.kfc-intro-section figure,
+	.wp-block-post-content > .wp-block-columns.kfc-intro-section iframe {
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
 	/* WooCommerce coupon section on mobile */
 	.wc-block-components-totals-coupon,
 	.woocommerce-cart .coupon {
@@ -1403,6 +1427,15 @@ body.home .wp-site-blocks {
 	font-size: 2rem;
 	font-weight: 600;
 	margin-bottom: 1rem;
+}
+
+/* Product short description - paragraph spacing */
+.single-product .product-short-description p {
+	margin-bottom: 1em;
+}
+
+.single-product .product-short-description p:last-child {
+	margin-bottom: 0;
 }
 
 /* Product price */
@@ -2206,6 +2239,11 @@ button.LoadMoreButton:active {
 /* ==========================================================================
    Features Pattern - CSS Grid Layout
    ========================================================================== */
+
+/* Add border to white background blocks */
+.wp-block-group.has-light-background-color .wp-block-media-text.has-white-background-color {
+	border: 1px solid #0099ff;
+}
 
 /* Convert columns container to 2-column grid */
 .wp-block-group.has-light-background-color .wp-block-columns {
