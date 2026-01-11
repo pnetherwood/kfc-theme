@@ -40,3 +40,7 @@ yarn-error.log*
 *.backup
 *.bak
 *.old
+
+# Claude config
+.claude
+.playwright-mcp
