@@ -396,3 +396,144 @@ function kfc_product_short_description_shortcode() {
 }
 add_shortcode( 'product_short_description', 'kfc_product_short_description_shortcode' );
 
+/**
+ * PERFORMANCE OPTIMIZATION: Conditionally load PayPal and WooCommerce scripts
+ *
+ * Problem: Payment gateway scripts (PayPal, ApplePay, GooglePay) and cart scripts
+ * load on every page, even where checkout is impossible (homepage, about, etc.)
+ * This causes ~3-4 seconds of unnecessary API calls and JavaScript execution.
+ *
+ * Solution: Only load heavy payment/cart scripts on pages where users can actually
+ * add items to cart or checkout (shop, product, cart, checkout, courses pages).
+ *
+ * Cart menu item remains visible on all pages, but heavy scripts only load where needed.
+ */
+add_action( 'wp_enqueue_scripts', 'kfc_optimize_payment_scripts', 999 );
+function kfc_optimize_payment_scripts() {
+	// Define pages where users can actually checkout or add to cart
+	$is_shop_page = is_checkout() || is_cart() || is_shop() || is_product() || is_page( 'courses' );
+
+	// If NOT on a shop-related page, disable heavy payment gateway scripts
+	if ( ! $is_shop_page ) {
+
+		// Disable PayPal button scripts (ApplePay, GooglePay, standard buttons)
+		// These make multiple API calls to PayPal servers (~700ms each)
+		wp_dequeue_script( 'ppcp-button' );
+		wp_deregister_script( 'ppcp-button' );
+		wp_dequeue_script( 'ppcp-googlepay-boot' );
+		wp_deregister_script( 'ppcp-googlepay-boot' );
+		wp_dequeue_script( 'ppcp-applepay-boot' );
+		wp_deregister_script( 'ppcp-applepay-boot' );
+
+		// Disable additional PayPal scripts
+		wp_dequeue_script( 'ppcp-smart-button' );
+		wp_deregister_script( 'ppcp-smart-button' );
+		wp_dequeue_script( 'wc-gateway-ppcp-smart-button' );
+		wp_deregister_script( 'wc-gateway-ppcp-smart-button' );
+
+		// Disable PayPal styles
+		wp_dequeue_style( 'ppcp-button' );
+		wp_dequeue_style( 'ppcp-googlepay' );
+		wp_dequeue_style( 'ppcp-applepay' );
+
+		// Disable WooCommerce cart fragments (heavy AJAX calls to update cart count)
+		// This makes ~1.1 second AJAX calls on every page load
+		wp_dequeue_script( 'wc-cart-fragments' );
+		wp_deregister_script( 'wc-cart-fragments' );
+
+		// Disable WooCommerce add-to-cart script (not needed on info pages)
+		wp_dequeue_script( 'wc-add-to-cart' );
+		wp_deregister_script( 'wc-add-to-cart' );
+
+		// Disable WooCommerce blocks checkout scripts (only needed on checkout)
+		wp_dequeue_script( 'wc-blocks-checkout' );
+		wp_deregister_script( 'wc-blocks-checkout' );
+		wp_dequeue_script( 'wc-blocks-components' );
+		wp_deregister_script( 'wc-blocks-components' );
+
+		// Disable WooCommerce sourcebuster tracking (analytics, not critical)
+		wp_dequeue_script( 'sourcebuster-js' );
+		wp_deregister_script( 'sourcebuster-js' );
+		wp_dequeue_script( 'wc-order-attribution' );
+		wp_deregister_script( 'wc-order-attribution' );
+	}
+}
+
+/**
+ * PERFORMANCE OPTIMIZATION: Disable PayPal SDK loading on non-shop pages
+ * PayPal SDK is loaded via inline script tag, so we need to filter it out
+ */
+add_filter( 'script_loader_tag', 'kfc_filter_paypal_sdk', 10, 3 );
+function kfc_filter_paypal_sdk( $tag, $handle, $src ) {
+	// Define pages where PayPal SDK is needed
+	$is_shop_page = is_checkout() || is_cart() || is_shop() || is_product() || is_page( 'courses' );
+
+	// If NOT on shop page and this is a PayPal SDK script, remove it
+	if ( ! $is_shop_page && ( strpos( $src, 'paypal.com' ) !== false || strpos( $src, 'paypalobjects.com' ) !== false ) ) {
+		return '';
+	}
+
+	return $tag;
+}
+
+/**
+ * PERFORMANCE OPTIMIZATION: Disable WooCommerce PayPal Payments plugin assets on non-shop pages
+ * The plugin loads assets even when payment buttons aren't displayed
+ */
+add_action( 'wp_enqueue_scripts', 'kfc_disable_paypal_plugin_assets', 999 );
+function kfc_disable_paypal_plugin_assets() {
+	$is_shop_page = is_checkout() || is_cart() || is_shop() || is_product() || is_page( 'courses' );
+
+	if ( ! $is_shop_page ) {
+		// Dequeue all PayPal plugin styles
+		global $wp_styles;
+		if ( isset( $wp_styles->registered ) ) {
+			foreach ( $wp_styles->registered as $handle => $data ) {
+				if ( strpos( $handle, 'ppcp' ) !== false || strpos( $handle, 'paypal' ) !== false ) {
+					wp_dequeue_style( $handle );
+					wp_deregister_style( $handle );
+				}
+				if ( isset( $data->src ) && strpos( $data->src, 'woocommerce-paypal-payments' ) !== false ) {
+					wp_dequeue_style( $handle );
+					wp_deregister_style( $handle );
+				}
+			}
+		}
+
+		// Dequeue all PayPal plugin scripts
+		global $wp_scripts;
+		if ( isset( $wp_scripts->registered ) ) {
+			foreach ( $wp_scripts->registered as $handle => $data ) {
+				if ( strpos( $handle, 'ppcp' ) !== false || strpos( $handle, 'paypal' ) !== false ) {
+					wp_dequeue_script( $handle );
+					wp_deregister_script( $handle );
+				}
+				if ( isset( $data->src ) && strpos( $data->src, 'woocommerce-paypal-payments' ) !== false ) {
+					wp_dequeue_script( $handle );
+					wp_deregister_script( $handle );
+				}
+			}
+		}
+	}
+}
+
+/**
+ * PERFORMANCE OPTIMIZATION: Remove PayPal inline scripts from non-shop pages
+ */
+add_action( 'wp_print_scripts', 'kfc_remove_paypal_inline_scripts', 999 );
+function kfc_remove_paypal_inline_scripts() {
+	$is_shop_page = is_checkout() || is_cart() || is_shop() || is_product() || is_page( 'courses' );
+
+	if ( ! $is_shop_page ) {
+		global $wp_scripts;
+		if ( isset( $wp_scripts->registered ) ) {
+			foreach ( $wp_scripts->registered as $handle => $data ) {
+				if ( strpos( $handle, 'ppcp' ) !== false || strpos( $handle, 'paypal' ) !== false ) {
+					wp_dequeue_script( $handle );
+					wp_deregister_script( $handle );
+				}
+			}
+		}
+	}
+}
+

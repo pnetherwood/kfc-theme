@@ -504,41 +504,6 @@ body.home .wp-site-blocks {
 	display: none !important;
 }
 
-/* Hide separator before cart item (whether visible or hidden) */
-.wp-block-navigation .wp-block-navigation-item + .wpmenucartli::before {
-	content: "";
-	display: none;
-}
-
-.wp-block-navigation .wp-block-navigation-item.wpmenucartli::after {
-	display: none !important;
-}
-
-/* Hide separator on the item immediately before the cart */
-.wp-block-navigation-item:not(.wpmenucartli) + .wpmenucartli {
-	margin-left: 0;
-}
-
-.wp-block-navigation .wp-block-navigation-item:nth-last-child(2)::after {
-	display: none !important;
-}
-
-/* WP Menu Cart item spacing - keep compact to prevent wrapping */
-.wp-block-navigation .wpmenucartli {
-	margin-left: 0.5rem;
-}
-
-.wp-block-navigation .wpmenucartli a {
-	white-space: nowrap;
-	padding-left: 0.5rem !important;
-	padding-right: 0.5rem !important;
-}
-
-/* Reduce cart content spacing */
-.wpmenucartli .cartcontents,
-.wpmenucartli .amount {
-	font-size: 0.85em;
-}
 
 /* Keep header on one line when space allows */
 .wp-block-group.alignwide.is-layout-flex {
@@ -595,11 +560,6 @@ body.home .wp-site-blocks {
 		padding-left: 0.6rem;
 		padding-right: 0.6rem;
 		font-size: 0.9rem;
-	}
-
-	.wpmenucartli .cartcontents,
-	.wpmenucartli .amount {
-		font-size: 0.85em;
 	}
 }
 
@@ -2968,3 +2928,50 @@ button.LoadMoreButton:active {
 		max-width: 100% !important;
 	}
 }
+
+/* ==========================================================================
+   Navigation Links - Remove underlines
+   ========================================================================== */
+
+/* Remove underlines from all navigation links */
+.wp-block-navigation .wp-block-navigation-item a {
+	text-decoration: none !important;
+}
+
+.wp-block-navigation .wp-block-navigation-item a:hover {
+	text-decoration: none !important;
+}
+
+/* ==========================================================================
+   Cart Icon Styling
+   ========================================================================== */
+
+/* Cart icon link styling */
+.wp-block-navigation .wp-block-navigation-item a[href*="/basket"] {
+	text-decoration: none !important;
+	transition: transform 0.3s ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 !important;
+}
+
+/* Hide the emoji/text and show PNG icon instead */
+.wp-block-navigation .wp-block-navigation-item a[href*="/basket"] .wp-block-navigation-item__label {
+	font-size: 0;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	background-image: url('../images/cart.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	filter: brightness(0) invert(1); /* Make the icon white */
+}
+
+/* Expand animation on hover */
+.wp-block-navigation .wp-block-navigation-item a[href*="/basket"]:hover {
+	transform: scale(1.2);
+	text-decoration: none !important;
+}
+
