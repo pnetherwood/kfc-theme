@@ -537,3 +537,31 @@ function kfc_remove_paypal_inline_scripts() {
 	}
 }
 
+/**
+ * PERFORMANCE OPTIMIZATION: Disable WooCommerce CSS on non-shop pages
+ * WooCommerce loads CSS globally even on pages without shop functionality
+ * This removes ~21KB of unnecessary CSS on homepage and other non-shop pages
+ */
+add_action( 'wp_enqueue_scripts', 'kfc_disable_woocommerce_css_non_shop', 999 );
+function kfc_disable_woocommerce_css_non_shop() {
+	// Only load WooCommerce CSS on pages that actually need it
+	$is_shop_page = is_woocommerce() || is_cart() || is_checkout() || is_account_page() || is_shop() || is_product() || is_page( 'courses' ) || is_page( 'store' );
+
+	// If NOT on a shop-related page, remove WooCommerce styles
+	if ( ! $is_shop_page ) {
+		// Dequeue WooCommerce core styles
+		wp_dequeue_style( 'woocommerce-general' );
+		wp_dequeue_style( 'woocommerce-layout' );
+		wp_dequeue_style( 'woocommerce-smallscreen' );
+
+		// Dequeue WooCommerce block styles
+		wp_dequeue_style( 'wc-blocks-style' );
+		wp_dequeue_style( 'wc-blocks-style-active-filters' );
+		wp_dequeue_style( 'wc-blocks-style-add-to-cart-form' );
+		wp_dequeue_style( 'wc-blocks-vendors-style' );
+
+		// Dequeue block theme styles
+		wp_dequeue_style( 'wc-blocks-integration' );
+	}
+}
+
