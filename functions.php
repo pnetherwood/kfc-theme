@@ -554,13 +554,16 @@ function kfc_disable_woocommerce_css_non_shop() {
 		wp_dequeue_style( 'woocommerce-layout' );
 		wp_dequeue_style( 'woocommerce-smallscreen' );
 
+		// Dequeue block theme specific styles
+		wp_dequeue_style( 'woocommerce-blocktheme' );
+
 		// Dequeue WooCommerce block styles
 		wp_dequeue_style( 'wc-blocks-style' );
 		wp_dequeue_style( 'wc-blocks-style-active-filters' );
 		wp_dequeue_style( 'wc-blocks-style-add-to-cart-form' );
 		wp_dequeue_style( 'wc-blocks-vendors-style' );
 
-		// Dequeue block theme styles
+		// Dequeue block theme integration
 		wp_dequeue_style( 'wc-blocks-integration' );
 	}
 }
