@@ -559,6 +559,7 @@ function kfc_disable_woocommerce_css_non_shop() {
 
 		// Dequeue WooCommerce block styles
 		wp_dequeue_style( 'wc-blocks-style' );
+		wp_deregister_style( 'wc-blocks-style' );
 		wp_dequeue_style( 'wc-block-style' );
 		wp_dequeue_style( 'wc-blocks-style-active-filters' );
 		wp_dequeue_style( 'wc-blocks-style-add-to-cart-form' );
@@ -567,10 +568,9 @@ function kfc_disable_woocommerce_css_non_shop() {
 		// Dequeue block theme integration
 		wp_dequeue_style( 'wc-blocks-integration' );
 
-		// Dequeue PW WooCommerce Gift Cards styles
-		wp_dequeue_style( 'pw-gift-cards-blocks' );
-		wp_dequeue_style( 'pwgc-blocks' );
-		wp_dequeue_style( 'pw-woocommerce-gift-cards-blocks' );
+		// Dequeue PW WooCommerce Gift Cards styles (correct handle from HTML source)
+		wp_dequeue_style( 'pwgc-wc-blocks-style' );
+		wp_deregister_style( 'pwgc-wc-blocks-style' );
 	}
 }
 
