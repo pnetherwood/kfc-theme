@@ -574,3 +574,140 @@ function kfc_disable_woocommerce_css_non_shop() {
 	}
 }
 
+/**
+ * PERFORMANCE OPTIMIZATION: Add fetchpriority to first MetaSlider image
+ *
+ * Marks the first MetaSlider image as high priority to improve LCP.
+ * Only targets MetaSlider (msDefaultImage class) to avoid affecting other sliders.
+ */
+add_filter( 'the_content', 'kfc_add_fetchpriority_to_slider', 1000 );
+
+function kfc_add_fetchpriority_to_slider( $content ) {
+	// Skip if content is empty or not a string
+	if ( empty( $content ) || ! is_string( $content ) ) {
+		return $content;
+	}
+
+	// Add fetchpriority="high" to the first MetaSlider image
+	// Only matches MetaSlider images (msDefaultImage class)
+	$content = preg_replace(
+		'/<img([^>]*class="[^"]*msDefaultImage[^"]*"[^>]*)>/i',
+		'<img$1 fetchpriority="high">',
+		$content,
+		1  // Only replace the first occurrence
+	);
+
+	return $content;
+}
+
+/**
+ * PERFORMANCE OPTIMIZATION: Disable lazy loading on first MetaSlider image
+ *
+ * Removes lazy loading from the first MetaSlider image to improve LCP.
+ * Only targets MetaSlider (msDefaultImage class) to avoid breaking other sliders.
+ */
+add_filter( 'the_content', 'kfc_disable_lazy_on_lcp', 1001 );
+
+function kfc_disable_lazy_on_lcp( $content ) {
+	// Skip if content is empty or not a string
+	if ( empty( $content ) || ! is_string( $content ) ) {
+		return $content;
+	}
+
+	// Only affect MetaSlider images (msDefaultImage class)
+	// This avoids breaking Smart Post Slider and other carousels
+	$content = preg_replace_callback(
+		'/<img([^>]*class="[^"]*msDefaultImage[^"]*"[^>]*)>/i',
+		function( $matches ) {
+			$img_tag = $matches[0];
+
+			// Move data-src to src
+			$img_tag = preg_replace( '/data-src="([^"]+)"/', 'src="$1"', $img_tag );
+
+			// Remove lazy class
+			$img_tag = preg_replace( '/\s*lazy\s*/', ' ', $img_tag );
+
+			// Remove placeholder src if present
+			$img_tag = preg_replace( '/src="data:image\/svg\+xml[^"]*"\s*/', '', $img_tag );
+
+			return $img_tag;
+		},
+		$content,
+		1  // Only replace the first occurrence
+	);
+
+	return $content;
+}
+
+/**
+ * PERFORMANCE OPTIMIZATION: Replace logo.png with logo.webp for supported browsers
+ *
+ * Uses output buffering to replace the logo URL across the entire page.
+ */
+add_action( 'template_redirect', 'kfc_start_logo_webp_buffer' );
+
+function kfc_start_logo_webp_buffer() {
+	// Only replace if browser supports WebP
+	if ( isset( $_SERVER['HTTP_ACCEPT'] ) && strpos( $_SERVER['HTTP_ACCEPT'], 'image/webp' ) !== false ) {
+		ob_start( 'kfc_replace_logo_with_webp' );
+	}
+}
+
+function kfc_replace_logo_with_webp( $content ) {
+	// Replace logo.png with logo.webp in the theme assets
+	$content = str_replace(
+		'/wp-content/themes/kfc-theme/assets/images/logo.png',
+		'/wp-content/themes/kfc-theme/assets/images/logo.webp',
+		$content
+	);
+
+	return $content;
+}
+
+/**
+ * PERFORMANCE FIX: Prevent W3TC lazy loading from breaking Smart Post Carousel
+ *
+ * W3TC's lazy loading conflicts with the carousel's built-in lazy loading.
+ * This function removes W3TC's lazy loading attributes from carousel images after
+ * W3TC has processed the page, so it doesn't interfere with minify or other operations.
+ */
+add_filter( 'the_content', 'kfc_fix_carousel_lazy_loading', 999 );
+
+function kfc_fix_carousel_lazy_loading( $content ) {
+	// Skip if in admin
+	if ( is_admin() ) {
+		return $content;
+	}
+
+	// Skip if content is empty or not a string
+	if ( empty( $content ) || ! is_string( $content ) ) {
+		return $content;
+	}
+
+	// Skip if content doesn't have carousel
+	if ( strpos( $content, 'sp-pcp-carousel' ) === false ) {
+		return $content;
+	}
+
+	// Remove W3TC lazy loading attributes from carousel images
+	// W3TC adds data-src and a placeholder src, we need to restore the real src
+	$content = preg_replace_callback(
+		'/<img([^>]*class="[^"]*(?:sp-pcp|pcp_wrapper)[^"]*"[^>]*)>/i',
+		function( $matches ) {
+			$img_tag = $matches[0];
+
+			// If W3TC added lazy loading, fix it
+			if ( strpos( $img_tag, 'data-src=' ) !== false ) {
+				// Move data-src back to src
+				$img_tag = preg_replace( '/src="[^"]*"\s*data-src="([^"]+)"/', 'src="$1"', $img_tag );
+				// Remove any remaining data-src
+				$img_tag = preg_replace( '/\s*data-src="[^"]*"/', '', $img_tag );
+			}
+
+			return $img_tag;
+		},
+		$content
+	);
+
+	return $content;
+}
