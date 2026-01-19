@@ -1226,6 +1226,10 @@ function kfc_get_contact_faqs() {
 			'question' => 'What time and date is the next course and what do I need to bring?',
 			'answer'   => 'Click the specific course link on the courses page for complete details about timing, dates, pricing, and required items to bring.',
 		),
+		array(
+			'question' => 'I\'m having payment problems. What should I do?',
+			'answer'   => 'If you\'re experiencing issues with online payment, please contact us directly via the contact form or email. We can help troubleshoot payment problems or arrange alternative payment methods if needed.',
+		),
 	);
 }
 
