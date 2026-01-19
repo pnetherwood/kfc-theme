@@ -711,3 +711,393 @@ function kfc_fix_carousel_lazy_loading( $content ) {
 
 	return $content;
 }
+
+/**
+ * LOCAL SEO: Add LocalBusiness/SportsActivityLocation Schema Markup
+ *
+ * Outputs JSON-LD structured data for Google to understand this is a local
+ * sports club. This helps with "near me" searches and local pack results.
+ *
+ * Schema type: SportsActivityLocation (subtype of LocalBusiness)
+ * @see https://schema.org/SportsActivityLocation
+ */
+add_action( 'wp_head', 'kfc_local_business_schema' );
+
+function kfc_local_business_schema() {
+	// Only output on the homepage to avoid duplicate schema
+	if ( ! is_front_page() ) {
+		return;
+	}
+
+	$schema = array(
+		'@context'    => 'https://schema.org',
+		'@type'       => 'SportsActivityLocation',
+		'@id'         => 'https://kingstonfencing.club/#organization',
+		'name'        => 'Kingston Fencing Club',
+		'alternateName' => 'KFC',
+		'description' => 'Friendly recreational fencing club near Kingston-upon-Thames offering beginner courses, private lessons and weekly training in Foil, Epee and Sabre for adults and juniors.',
+		'url'         => 'https://kingstonfencing.club',
+		'logo'        => 'https://kingstonfencing.club/wp-content/uploads/2021/12/cropped-kfc-logo-1.png',
+		'image'       => 'https://kingstonfencing.club/wp-content/uploads/2021/12/cropped-kfc-logo-1.png',
+		'address'     => array(
+			'@type'           => 'PostalAddress',
+			'streetAddress'   => 'Coombe Boys School, College Gardens',
+			'addressLocality' => 'New Malden',
+			'addressRegion'   => 'Surrey',
+			'postalCode'      => 'KT3 6NU',
+			'addressCountry'  => 'GB',
+		),
+		'geo'         => array(
+			'@type'     => 'GeoCoordinates',
+			'latitude'  => 51.3950,
+			'longitude' => -0.2476,
+		),
+		'openingHoursSpecification' => array(
+			array(
+				'@type'     => 'OpeningHoursSpecification',
+				'dayOfWeek' => 'Monday',
+				'opens'     => '18:30',
+				'closes'    => '21:30',
+			),
+			array(
+				'@type'     => 'OpeningHoursSpecification',
+				'dayOfWeek' => 'Tuesday',
+				'opens'     => '18:00',
+				'closes'    => '21:30',
+			),
+		),
+		'sameAs'      => array(
+			'https://www.facebook.com/kingstonfencing',
+			'https://www.instagram.com/kingstonfencing',
+			'https://www.youtube.com/@kingstonfencing',
+			'https://www.tiktok.com/@kingstonfencing',
+		),
+		'priceRange'  => '£20-£80',
+		'sport'       => 'Fencing',
+		'areaServed'  => array(
+			array(
+				'@type' => 'City',
+				'name'  => 'Kingston upon Thames',
+			),
+			array(
+				'@type' => 'City',
+				'name'  => 'New Malden',
+			),
+			array(
+				'@type' => 'AdministrativeArea',
+				'name'  => 'Surrey',
+			),
+			array(
+				'@type' => 'AdministrativeArea',
+				'name'  => 'South West London',
+			),
+		),
+		'memberOf'    => array(
+			'@type' => 'Organization',
+			'name'  => 'British Fencing',
+			'url'   => 'https://www.britishfencing.com',
+		),
+		'hasOfferCatalog' => array(
+			'@type'           => 'OfferCatalog',
+			'name'            => 'Fencing Classes and Courses',
+			'itemListElement' => array(
+				array(
+					'@type'       => 'Offer',
+					'itemOffered' => array(
+						'@type' => 'Service',
+						'name'  => 'Adult Beginner Fencing Course',
+					),
+				),
+				array(
+					'@type'       => 'Offer',
+					'itemOffered' => array(
+						'@type' => 'Service',
+						'name'  => 'Junior Beginner Fencing Course',
+					),
+				),
+				array(
+					'@type'       => 'Offer',
+					'itemOffered' => array(
+						'@type' => 'Service',
+						'name'  => 'Private Fencing Lessons',
+					),
+				),
+				array(
+					'@type'       => 'Offer',
+					'itemOffered' => array(
+						'@type' => 'Service',
+						'name'  => 'Weekly Training Sessions',
+					),
+				),
+			),
+		),
+	);
+
+	echo '<script type="application/ld+json">' . "\n";
+	echo wp_json_encode( $schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
+	echo "\n</script>\n";
+}
+
+/**
+ * LOCAL SEO: Add Sitelinks Search Box Schema
+ *
+ * Enables Google to show a search box directly in search results for branded
+ * queries like "Kingston Fencing Club". Users can search the site from Google.
+ *
+ * @see https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox
+ */
+add_action( 'wp_head', 'kfc_sitelinks_searchbox_schema' );
+
+function kfc_sitelinks_searchbox_schema() {
+	// Only output on the homepage
+	if ( ! is_front_page() ) {
+		return;
+	}
+
+	$schema = array(
+		'@context'        => 'https://schema.org',
+		'@type'           => 'WebSite',
+		'@id'             => 'https://kingstonfencing.club/#website',
+		'name'            => 'Kingston Fencing Club',
+		'url'             => 'https://kingstonfencing.club',
+		'potentialAction' => array(
+			'@type'       => 'SearchAction',
+			'target'      => array(
+				'@type'       => 'EntryPoint',
+				'urlTemplate' => 'https://kingstonfencing.club/?s={search_term_string}',
+			),
+			'query-input' => 'required name=search_term_string',
+		),
+	);
+
+	echo '<script type="application/ld+json">' . "\n";
+	echo wp_json_encode( $schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
+	echo "\n</script>\n";
+}
+
+/**
+ * LOCAL SEO: Add Breadcrumb Schema
+ *
+ * Outputs BreadcrumbList structured data for better search result appearance.
+ * Shows breadcrumb trail in Google search results instead of plain URL.
+ *
+ * @see https://developers.google.com/search/docs/appearance/structured-data/breadcrumb
+ */
+add_action( 'wp_head', 'kfc_breadcrumb_schema' );
+
+function kfc_breadcrumb_schema() {
+	// Don't output on homepage (no breadcrumbs needed)
+	if ( is_front_page() ) {
+		return;
+	}
+
+	// Skip products - WooCommerce already outputs breadcrumb schema
+	if ( is_singular( 'product' ) ) {
+		return;
+	}
+
+	$breadcrumbs = array();
+	$position    = 1;
+
+	// Always start with Home
+	$breadcrumbs[] = array(
+		'@type'    => 'ListItem',
+		'position' => $position++,
+		'name'     => 'Home',
+		'item'     => 'https://kingstonfencing.club/',
+	);
+
+	// Handle different page types
+	if ( is_singular( 'post' ) ) {
+		// Blog posts: Home > Category > Post
+		$categories = get_the_category();
+		if ( ! empty( $categories ) ) {
+			$category      = $categories[0];
+			$breadcrumbs[] = array(
+				'@type'    => 'ListItem',
+				'position' => $position++,
+				'name'     => $category->name,
+				'item'     => get_category_link( $category->term_id ),
+			);
+		}
+		$breadcrumbs[] = array(
+			'@type'    => 'ListItem',
+			'position' => $position++,
+			'name'     => get_the_title(),
+		);
+	} elseif ( is_page() ) {
+		// Pages: Home > Page
+		// Check for parent page
+		$post   = get_post();
+		$parent = $post->post_parent;
+		if ( $parent ) {
+			$breadcrumbs[] = array(
+				'@type'    => 'ListItem',
+				'position' => $position++,
+				'name'     => get_the_title( $parent ),
+				'item'     => get_permalink( $parent ),
+			);
+		}
+		$breadcrumbs[] = array(
+			'@type'    => 'ListItem',
+			'position' => $position++,
+			'name'     => get_the_title(),
+		);
+	} elseif ( is_category() ) {
+		// Category archive: Home > Category
+		$breadcrumbs[] = array(
+			'@type'    => 'ListItem',
+			'position' => $position++,
+			'name'     => single_cat_title( '', false ),
+		);
+	} elseif ( is_tax( 'product_cat' ) ) {
+		// Product category: Home > Courses > Category
+		$breadcrumbs[] = array(
+			'@type'    => 'ListItem',
+			'position' => $position++,
+			'name'     => 'Courses',
+			'item'     => 'https://kingstonfencing.club/courses/',
+		);
+		$breadcrumbs[] = array(
+			'@type'    => 'ListItem',
+			'position' => $position++,
+			'name'     => single_term_title( '', false ),
+		);
+	}
+
+	// Only output if we have more than just Home
+	if ( count( $breadcrumbs ) < 2 ) {
+		return;
+	}
+
+	$schema = array(
+		'@context'        => 'https://schema.org',
+		'@type'           => 'BreadcrumbList',
+		'itemListElement' => $breadcrumbs,
+	);
+
+	echo '<script type="application/ld+json">' . "\n";
+	echo wp_json_encode( $schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
+	echo "\n</script>\n";
+}
+
+/**
+ * LOCAL SEO: Add Event Schema for Fencing Courses
+ *
+ * Outputs Event structured data for WooCommerce products that are courses.
+ * This helps courses appear in Google's event search results.
+ *
+ * Uses product attributes 'Start' and 'End' for event dates.
+ *
+ * @see https://developers.google.com/search/docs/appearance/structured-data/event
+ */
+add_action( 'wp_head', 'kfc_course_event_schema' );
+
+function kfc_course_event_schema() {
+	// Only on single product pages
+	if ( ! is_singular( 'product' ) ) {
+		return;
+	}
+
+	global $product;
+	if ( ! $product ) {
+		$product = wc_get_product( get_the_ID() );
+	}
+
+	if ( ! $product ) {
+		return;
+	}
+
+	// Check if product is in a course-related category
+	$course_categories = array( 'courses', 'junior', 'lesson' );
+	$product_cats      = wp_get_post_terms( $product->get_id(), 'product_cat', array( 'fields' => 'slugs' ) );
+
+	$is_course = false;
+	foreach ( $product_cats as $cat ) {
+		if ( in_array( $cat, $course_categories, true ) ) {
+			$is_course = true;
+			break;
+		}
+	}
+
+	if ( ! $is_course ) {
+		return;
+	}
+
+	// Get course dates from product attributes
+	$start_date = $product->get_attribute( 'Start' );
+	$end_date   = $product->get_attribute( 'End' );
+
+	// Skip if no start date (can't have an event without a date)
+	if ( empty( $start_date ) ) {
+		return;
+	}
+
+	// Parse dates - try to convert to ISO 8601 format
+	$start_timestamp = strtotime( $start_date );
+	$end_timestamp   = ! empty( $end_date ) ? strtotime( $end_date ) : $start_timestamp;
+
+	// Skip if date parsing failed
+	if ( ! $start_timestamp ) {
+		return;
+	}
+
+	// Determine event status based on stock
+	$event_status = 'https://schema.org/EventScheduled';
+	if ( ! $product->is_in_stock() ) {
+		$event_status = 'https://schema.org/EventMovedOnline'; // Or could use EventCancelled
+	}
+
+	// Determine availability
+	$availability = 'https://schema.org/InStock';
+	if ( ! $product->is_in_stock() ) {
+		$availability = 'https://schema.org/SoldOut';
+	}
+
+	// Build the event schema
+	$schema = array(
+		'@context'         => 'https://schema.org',
+		'@type'            => 'SportsEvent',
+		'name'             => $product->get_name(),
+		'description'      => wp_strip_all_tags( $product->get_short_description() ?: $product->get_description() ),
+		'startDate'        => gmdate( 'Y-m-d', $start_timestamp ),
+		'endDate'          => gmdate( 'Y-m-d', $end_timestamp ),
+		'eventStatus'      => $event_status,
+		'eventAttendanceMode' => 'https://schema.org/OfflineEventAttendanceMode',
+		'location'         => array(
+			'@type'   => 'Place',
+			'name'    => 'Coombe Boys School Sports Hall',
+			'address' => array(
+				'@type'           => 'PostalAddress',
+				'streetAddress'   => 'College Gardens',
+				'addressLocality' => 'New Malden',
+				'addressRegion'   => 'Surrey',
+				'postalCode'      => 'KT3 6NU',
+				'addressCountry'  => 'GB',
+			),
+		),
+		'image'            => wp_get_attachment_url( $product->get_image_id() ) ?: 'https://kingstonfencing.club/wp-content/uploads/2021/12/cropped-kfc-logo-1.png',
+		'organizer'        => array(
+			'@type' => 'Organization',
+			'name'  => 'Kingston Fencing Club',
+			'url'   => 'https://kingstonfencing.club',
+		),
+		'performer'        => array(
+			'@type' => 'Organization',
+			'name'  => 'Kingston Fencing Club',
+		),
+		'offers'           => array(
+			'@type'           => 'Offer',
+			'url'             => get_permalink( $product->get_id() ),
+			'price'           => $product->get_price(),
+			'priceCurrency'   => get_woocommerce_currency(),
+			'availability'    => $availability,
+			'validFrom'       => gmdate( 'Y-m-d', strtotime( '-1 year' ) ),
+		),
+		'sport'            => 'Fencing',
+	);
+
+	echo '<script type="application/ld+json">' . "\n";
+	echo wp_json_encode( $schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
+	echo "\n</script>\n";
+}
