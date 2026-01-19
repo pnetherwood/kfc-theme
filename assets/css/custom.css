@@ -3010,6 +3010,7 @@ button.LoadMoreButton:active {
 	user-select: none;
 	position: relative;
 	padding-left: 50px;
+	outline: none;
 }
 
 /* Hide default marker */
@@ -3064,12 +3065,6 @@ button.LoadMoreButton:active {
 
 .kfc-faq-answer p:last-child {
 	margin-bottom: 0;
-}
-
-/* Focus state for accessibility */
-.kfc-faq-question:focus {
-	outline: 2px solid #0099ff;
-	outline-offset: 2px;
 }
 
 /* Mobile responsive */
