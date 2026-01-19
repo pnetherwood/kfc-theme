@@ -1103,3 +1103,301 @@ function kfc_course_event_schema() {
 	echo wp_json_encode( $schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
 	echo "\n</script>\n";
 }
+
+/**
+ * FAQ DATA: Courses Page
+ *
+ * Single source of truth for FAQ content on the Courses page.
+ * Used by both the display shortcode and schema markup.
+ */
+function kfc_get_courses_faqs() {
+	return array(
+		array(
+			'question' => 'What equipment is needed for a fencing course?',
+			'answer'   => 'All fencing equipment including foils, jackets, plastrons, gloves, and masks are provided by Kingston Fencing Club. Participants should wear stretchy trousers (e.g., tracksuit), a T-shirt, and trainers. It is advisable to bring your own bottled drinking water.',
+		),
+		array(
+			'question' => 'What time should I arrive for a course?',
+			'answer'   => 'Please arrive 15 minutes earlier for registration and equipment preparation.',
+		),
+		array(
+			'question' => 'What age groups can take fencing courses?',
+			'answer'   => 'Junior courses are for ages 10-16. Adult courses accommodate ages 14+ or 16+ depending on the specific course. All courses are mixed-gender.',
+		),
+		array(
+			'question' => 'Where do fencing courses take place?',
+			'answer'   => 'All fencing courses take place at Coombe Boys School, College Gardens, New Malden, Surrey, KT3 6NU.',
+		),
+		array(
+			'question' => 'Are spaces limited on courses?',
+			'answer'   => 'Yes, space on the course is strictly limited, so please apply soon to avoid disappointment.',
+		),
+		array(
+			'question' => 'What happens after completing a beginner course?',
+			'answer'   => 'All people who take the course can move on to become members of the club if they wish to continue fencing. Training and coaching continue with our qualified coaches on a weekly basis in either group or individual lessons. Equipment is available to use during club evenings including electric equipment.',
+		),
+		array(
+			'question' => 'Is fencing safe?',
+			'answer'   => 'Yes, fencing is one of the safest sports. All participants wear full protective equipment including masks, jackets, gloves, and plastrons. The sport has strict safety rules and is supervised by qualified coaches. All equipment is sanitized before use.',
+		),
+		array(
+			'question' => 'Is fencing safe for children?',
+			'answer'   => 'Yes, fencing is very safe for children. Junior fencers wear the same full protective equipment as adults, and sessions are supervised by qualified coaches with safeguarding training. The sport teaches discipline and control, making it safer than many contact sports like rugby or football.',
+		),
+		array(
+			'question' => 'What safety equipment is provided?',
+			'answer'   => 'Kingston Fencing Club provides all safety equipment including protective masks with safety-certified mesh, fencing jackets, plastrons (chest protectors), and gloves. All equipment meets British Fencing safety standards.',
+		),
+	);
+}
+
+/**
+ * FAQ DATA: Membership Page
+ *
+ * Single source of truth for FAQ content on the Membership page.
+ * Used by both the display shortcode and schema markup.
+ */
+function kfc_get_membership_faqs() {
+	return array(
+		array(
+			'question' => 'How much does membership cost?',
+			'answer'   => 'Adult membership is £110 per quarter. Junior, student, and senior membership is £90 per quarter. Members of affiliated clubs receive a 50% discount. Fees are paid every 3 months from your join date, not aligned with school terms.',
+		),
+		array(
+			'question' => 'How do I join Kingston Fencing Club?',
+			'answer'   => 'Apply for membership through the Membermojo online platform. The system sends automatic reminders when your membership renewal is due.',
+		),
+		array(
+			'question' => 'What do members get?',
+			'answer'   => 'Members can fence on Monday and Tuesday nights, use club equipment including electric equipment, participate in group training sessions, receive one-on-one coaching from qualified coaches, and receive discounts at affiliated clubs.',
+		),
+		array(
+			'question' => 'When can members fence?',
+			'answer'   => 'Members can attend Monday evenings (junior sessions 6:30-8:00 PM, adult sessions 7:00-9:30 PM) and Tuesday evenings (junior sessions 6:30-7:30 PM, adult sessions 7:00-9:30 PM). The club fences every week of the year except Christmas and throughout school holidays.',
+		),
+		array(
+			'question' => 'Do I need insurance to fence at the club?',
+			'answer'   => 'Yes, all members must join British Fencing for required insurance coverage. The club only provides insurance for course participants and officials, not members. New members receive 90 free introductory days with British Fencing membership, after which you can choose recreational or competition level membership.',
+		),
+		array(
+			'question' => 'Can visitors from other clubs attend?',
+			'answer'   => 'Yes, visitors from other fencing clubs can fence on Monday or Tuesday evenings for £15 per evening, or purchase a visitor pass. However, visitors are not entitled to use club equipment or receive coaching at the club and must bring their own equipment.',
+		),
+	);
+}
+
+/**
+ * FAQ DATA: Contact Us Page
+ *
+ * Single source of truth for FAQ content on the Contact Us page.
+ * Used by both the display shortcode and schema markup.
+ */
+function kfc_get_contact_faqs() {
+	return array(
+		array(
+			'question' => 'When is the next beginner\'s course for kids?',
+			'answer'   => 'Available courses are displayed on the courses page. If none are currently available, sign up for the mailing list to receive notifications when new course dates are published.',
+		),
+		array(
+			'question' => 'What\'s the minimum age for children to start fencing?',
+			'answer'   => 'Juniors must be 10 years or older to participate in junior classes or beginner courses.',
+		),
+		array(
+			'question' => 'My child has fenced before. Can we just turn up?',
+			'answer'   => 'No, please contact the club first to check junior session availability. Walk-ins cannot be accommodated due to limited space. The first trial night is free; ongoing participation requires membership.',
+		),
+		array(
+			'question' => 'Which session should my child join for fencing lessons?',
+			'answer'   => 'New fencers must register for a beginner course first. Existing junior fencers can join Monday (6:30-8:00 PM Epee, ages 10-17) or Tuesday (6:30-7:30 PM Foil/Epee, ages 10-17) sessions after contacting the club to confirm space availability.',
+		),
+		array(
+			'question' => 'I\'m looking to restart fencing after a long break. What do you advise?',
+			'answer'   => 'If you\'re new or rusty, enroll in a beginner course via the courses page. Experienced adult fencers can attend Monday or Tuesday evening sessions (7:00-9:30 PM) to refresh their skills. Club equipment is available for members.',
+		),
+		array(
+			'question' => 'When is the next taster session or course?',
+			'answer'   => 'All course and class information appears on the courses page with "Book Now" options for available sessions. Sign up for the mailing list if no courses are currently listed to be notified when new dates are published.',
+		),
+		array(
+			'question' => 'How do I book a course?',
+			'answer'   => 'Available courses appear on the courses page with "Book Now" options. Click the course you\'re interested in to see full details and book online. If a course recently started, contact the club about potential late enrollment.',
+		),
+		array(
+			'question' => 'What time and date is the next course and what do I need to bring?',
+			'answer'   => 'Click the specific course link on the courses page for complete details about timing, dates, pricing, and required items to bring.',
+		),
+	);
+}
+
+/**
+ * SHORTCODE: Display FAQ Accordion
+ *
+ * Displays FAQs in an accordion format using HTML <details> elements.
+ * Usage: [kfc_faqs page="courses"]
+ *
+ * @param array $atts Shortcode attributes.
+ * @return string HTML output.
+ */
+function kfc_display_faqs_shortcode( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'page' => 'courses', // courses, membership, or contact
+		),
+		$atts
+	);
+
+	// Get the FAQ data for the specified page
+	$function_name = "kfc_get_{$atts['page']}_faqs";
+	if ( ! function_exists( $function_name ) ) {
+		return '';
+	}
+
+	$faqs = call_user_func( $function_name );
+
+	if ( empty( $faqs ) ) {
+		return '';
+	}
+
+	$output = '<div class="kfc-faq-accordion">';
+
+	foreach ( $faqs as $faq ) {
+		$output .= '<details class="kfc-faq-item">';
+		$output .= '<summary class="kfc-faq-question">' . esc_html( $faq['question'] ) . '</summary>';
+		$output .= '<div class="kfc-faq-answer">' . wp_kses_post( wpautop( $faq['answer'] ) ) . '</div>';
+		$output .= '</details>';
+	}
+
+	$output .= '</div>';
+
+	return $output;
+}
+add_shortcode( 'kfc_faqs', 'kfc_display_faqs_shortcode' );
+
+/**
+ * SCHEMA: Courses FAQ Schema
+ *
+ * Outputs FAQPage structured data for the Courses page.
+ * Uses the same data source as the display shortcode.
+ *
+ * @see https://developers.google.com/search/docs/appearance/structured-data/faqpage
+ */
+function kfc_courses_faq_schema() {
+	if ( ! is_page( 'courses' ) ) {
+		return;
+	}
+
+	$faqs = kfc_get_courses_faqs();
+
+	if ( empty( $faqs ) ) {
+		return;
+	}
+
+	$schema_items = array();
+	foreach ( $faqs as $faq ) {
+		$schema_items[] = array(
+			'@type'          => 'Question',
+			'name'           => $faq['question'],
+			'acceptedAnswer' => array(
+				'@type' => 'Answer',
+				'text'  => $faq['answer'],
+			),
+		);
+	}
+
+	$schema = array(
+		'@context'   => 'https://schema.org',
+		'@type'      => 'FAQPage',
+		'mainEntity' => $schema_items,
+	);
+
+	echo '<script type="application/ld+json">' . "\n";
+	echo wp_json_encode( $schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
+	echo "\n</script>\n";
+}
+add_action( 'wp_head', 'kfc_courses_faq_schema' );
+
+/**
+ * SCHEMA: Membership FAQ Schema
+ *
+ * Outputs FAQPage structured data for the Membership page.
+ * Uses the same data source as the display shortcode.
+ *
+ * @see https://developers.google.com/search/docs/appearance/structured-data/faqpage
+ */
+function kfc_membership_faq_schema() {
+	if ( ! is_page( 'membership' ) ) {
+		return;
+	}
+
+	$faqs = kfc_get_membership_faqs();
+
+	if ( empty( $faqs ) ) {
+		return;
+	}
+
+	$schema_items = array();
+	foreach ( $faqs as $faq ) {
+		$schema_items[] = array(
+			'@type'          => 'Question',
+			'name'           => $faq['question'],
+			'acceptedAnswer' => array(
+				'@type' => 'Answer',
+				'text'  => $faq['answer'],
+			),
+		);
+	}
+
+	$schema = array(
+		'@context'   => 'https://schema.org',
+		'@type'      => 'FAQPage',
+		'mainEntity' => $schema_items,
+	);
+
+	echo '<script type="application/ld+json">' . "\n";
+	echo wp_json_encode( $schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
+	echo "\n</script>\n";
+}
+add_action( 'wp_head', 'kfc_membership_faq_schema' );
+
+/**
+ * SCHEMA: Contact Us FAQ Schema
+ *
+ * Outputs FAQPage structured data for the Contact Us page.
+ * Uses the same data source as the display shortcode.
+ *
+ * @see https://developers.google.com/search/docs/appearance/structured-data/faqpage
+ */
+function kfc_contact_faq_schema() {
+	if ( ! is_page( 'contact-us' ) ) {
+		return;
+	}
+
+	$faqs = kfc_get_contact_faqs();
+
+	if ( empty( $faqs ) ) {
+		return;
+	}
+
+	$schema_items = array();
+	foreach ( $faqs as $faq ) {
+		$schema_items[] = array(
+			'@type'          => 'Question',
+			'name'           => $faq['question'],
+			'acceptedAnswer' => array(
+				'@type' => 'Answer',
+				'text'  => $faq['answer'],
+			),
+		);
+	}
+
+	$schema = array(
+		'@context'   => 'https://schema.org',
+		'@type'      => 'FAQPage',
+		'mainEntity' => $schema_items,
+	);
+
+	echo '<script type="application/ld+json">' . "\n";
+	echo wp_json_encode( $schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
+	echo "\n</script>\n";
+}
+add_action( 'wp_head', 'kfc_contact_faq_schema' );

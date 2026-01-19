@@ -2975,3 +2975,116 @@ button.LoadMoreButton:active {
 	text-decoration: none !important;
 }
 
+/* ===================================================================
+   FAQ Accordion Styling
+   ================================================================ */
+
+/* FAQ container */
+.kfc-faq-accordion {
+	margin: 40px 0;
+}
+
+/* Individual FAQ item (details element) */
+.kfc-faq-item {
+	margin-bottom: 15px;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	padding: 0;
+	background: #ffffff;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kfc-faq-item:hover {
+	border-color: #0099ff;
+	box-shadow: 0 2px 8px rgba(0, 153, 255, 0.1);
+}
+
+/* Question (summary element) */
+.kfc-faq-question {
+	padding: 20px;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 1.1em;
+	color: #333;
+	list-style: none;
+	user-select: none;
+	position: relative;
+	padding-left: 50px;
+}
+
+/* Hide default marker */
+.kfc-faq-question::-webkit-details-marker {
+	display: none;
+}
+
+.kfc-faq-question::marker {
+	display: none;
+}
+
+/* Custom arrow icon */
+.kfc-faq-question::before {
+	content: '▶';
+	position: absolute;
+	left: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	display: inline-block;
+	transition: transform 0.3s ease;
+	color: #0099ff;
+	font-size: 0.8em;
+}
+
+/* Rotate arrow when open */
+.kfc-faq-item[open] .kfc-faq-question::before {
+	transform: translateY(-50%) rotate(90deg);
+}
+
+/* Answer container */
+.kfc-faq-answer {
+	padding: 0 20px 20px 50px;
+	color: #666;
+	line-height: 1.6;
+	animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.kfc-faq-answer p {
+	margin: 0 0 15px 0;
+}
+
+.kfc-faq-answer p:last-child {
+	margin-bottom: 0;
+}
+
+/* Focus state for accessibility */
+.kfc-faq-question:focus {
+	outline: 2px solid #0099ff;
+	outline-offset: 2px;
+}
+
+/* Mobile responsive */
+@media (max-width: 782px) {
+	.kfc-faq-question {
+		font-size: 1em;
+		padding: 15px;
+		padding-left: 45px;
+	}
+	
+	.kfc-faq-question::before {
+		left: 15px;
+	}
+	
+	.kfc-faq-answer {
+		padding: 0 15px 15px 45px;
+	}
+}
