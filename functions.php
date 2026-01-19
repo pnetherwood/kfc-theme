@@ -732,13 +732,13 @@ function kfc_local_business_schema() {
 	$schema = array(
 		'@context'    => 'https://schema.org',
 		'@type'       => 'SportsActivityLocation',
-		'@id'         => 'https://kingstonfencing.club/#organization',
+		'@id'         => 'https://kingstonfencing.co.uk/#organization',
 		'name'        => 'Kingston Fencing Club',
 		'alternateName' => 'KFC',
 		'description' => 'Friendly recreational fencing club near Kingston-upon-Thames offering beginner courses, private lessons and weekly training in Foil, Epee and Sabre for adults and juniors.',
-		'url'         => 'https://kingstonfencing.club',
-		'logo'        => 'https://kingstonfencing.club/wp-content/uploads/2021/12/cropped-kfc-logo-1.png',
-		'image'       => 'https://kingstonfencing.club/wp-content/uploads/2021/12/cropped-kfc-logo-1.png',
+		'url'         => 'https://kingstonfencing.co.uk',
+		'logo'        => 'https://kingstonfencing.co.uk/wp-content/uploads/2021/12/cropped-kfc-logo-1.png',
+		'image'       => 'https://kingstonfencing.co.uk/wp-content/uploads/2021/12/cropped-kfc-logo-1.png',
 		'address'     => array(
 			'@type'           => 'PostalAddress',
 			'streetAddress'   => 'Coombe Boys School, College Gardens',
@@ -857,14 +857,14 @@ function kfc_sitelinks_searchbox_schema() {
 	$schema = array(
 		'@context'        => 'https://schema.org',
 		'@type'           => 'WebSite',
-		'@id'             => 'https://kingstonfencing.club/#website',
+		'@id'             => 'https://kingstonfencing.co.uk/#website',
 		'name'            => 'Kingston Fencing Club',
-		'url'             => 'https://kingstonfencing.club',
+		'url'             => 'https://kingstonfencing.co.uk',
 		'potentialAction' => array(
 			'@type'       => 'SearchAction',
 			'target'      => array(
 				'@type'       => 'EntryPoint',
-				'urlTemplate' => 'https://kingstonfencing.club/?s={search_term_string}',
+				'urlTemplate' => 'https://kingstonfencing.co.uk/?s={search_term_string}',
 			),
 			'query-input' => 'required name=search_term_string',
 		),
@@ -881,9 +881,11 @@ function kfc_sitelinks_searchbox_schema() {
  * Outputs BreadcrumbList structured data for better search result appearance.
  * Shows breadcrumb trail in Google search results instead of plain URL.
  *
+ * DISABLED: Yoast SEO already provides breadcrumb schema on all pages.
+ *
  * @see https://developers.google.com/search/docs/appearance/structured-data/breadcrumb
  */
-add_action( 'wp_head', 'kfc_breadcrumb_schema' );
+// add_action( 'wp_head', 'kfc_breadcrumb_schema' );
 
 function kfc_breadcrumb_schema() {
 	// Don't output on homepage (no breadcrumbs needed)
@@ -904,7 +906,7 @@ function kfc_breadcrumb_schema() {
 		'@type'    => 'ListItem',
 		'position' => $position++,
 		'name'     => 'Home',
-		'item'     => 'https://kingstonfencing.club/',
+		'item'     => 'https://kingstonfencing.co.uk/',
 	);
 
 	// Handle different page types
@@ -956,7 +958,7 @@ function kfc_breadcrumb_schema() {
 			'@type'    => 'ListItem',
 			'position' => $position++,
 			'name'     => 'Courses',
-			'item'     => 'https://kingstonfencing.club/courses/',
+			'item'     => 'https://kingstonfencing.co.uk/courses/',
 		);
 		$breadcrumbs[] = array(
 			'@type'    => 'ListItem',
@@ -1076,11 +1078,11 @@ function kfc_course_event_schema() {
 				'addressCountry'  => 'GB',
 			),
 		),
-		'image'            => wp_get_attachment_url( $product->get_image_id() ) ?: 'https://kingstonfencing.club/wp-content/uploads/2021/12/cropped-kfc-logo-1.png',
+		'image'            => wp_get_attachment_url( $product->get_image_id() ) ?: 'https://kingstonfencing.co.uk/wp-content/uploads/2021/12/cropped-kfc-logo-1.png',
 		'organizer'        => array(
 			'@type' => 'Organization',
 			'name'  => 'Kingston Fencing Club',
-			'url'   => 'https://kingstonfencing.club',
+			'url'   => 'https://kingstonfencing.co.uk',
 		),
 		'performer'        => array(
 			'@type' => 'Organization',
