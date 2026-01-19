@@ -1228,7 +1228,7 @@ function kfc_get_contact_faqs() {
 		),
 		array(
 			'question' => 'I\'m having payment problems. What should I do?',
-			'answer'   => 'If you\'re experiencing issues with online payment, please contact us directly via the contact form or email. We can help troubleshoot payment problems or arrange alternative payment methods if needed.',
+			'answer'   => 'If you\'re having trouble paying on any of our systems please consult our <a href="https://kingstonfencing.co.uk/payment-problems/">Payment Problems page</a>.',
 		),
 	);
 }
@@ -1303,7 +1303,7 @@ function kfc_courses_faq_schema() {
 			'name'           => $faq['question'],
 			'acceptedAnswer' => array(
 				'@type' => 'Answer',
-				'text'  => $faq['answer'],
+				'text'  => wp_strip_all_tags( $faq['answer'] ),
 			),
 		);
 	}
@@ -1346,7 +1346,7 @@ function kfc_membership_faq_schema() {
 			'name'           => $faq['question'],
 			'acceptedAnswer' => array(
 				'@type' => 'Answer',
-				'text'  => $faq['answer'],
+				'text'  => wp_strip_all_tags( $faq['answer'] ),
 			),
 		);
 	}
@@ -1389,7 +1389,7 @@ function kfc_contact_faq_schema() {
 			'name'           => $faq['question'],
 			'acceptedAnswer' => array(
 				'@type' => 'Answer',
-				'text'  => $faq['answer'],
+				'text'  => wp_strip_all_tags( $faq['answer'] ),
 			),
 		);
 	}
