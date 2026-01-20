@@ -1126,11 +1126,7 @@ function kfc_get_courses_faqs() {
 		),
 		array(
 			'question' => 'Where do fencing courses take place?',
-			'answer'   => 'All fencing courses take place at Coombe Boys School, College Gardens, New Malden, Surrey, KT3 6NU.',
-		),
-		array(
-			'question' => 'Are spaces limited on courses?',
-			'answer'   => 'Yes, space on the course is strictly limited, so please apply soon to avoid disappointment.',
+			'answer'   => 'All fencing courses take place at Sports Hall, Coombe Boys School, College Gardens, New Malden, Surrey, KT3 6NU. See <a href="/meeting-place">Meeting Place</a> for directions and parking.',
 		),
 		array(
 			'question' => 'What happens after completing a beginner course?',
@@ -1138,15 +1134,23 @@ function kfc_get_courses_faqs() {
 		),
 		array(
 			'question' => 'Is fencing safe?',
-			'answer'   => 'Yes, fencing is one of the safest sports. All participants wear full protective equipment including masks, jackets, gloves, and plastrons. The sport has strict safety rules and is supervised by qualified coaches. All equipment is sanitized before use.',
+			'answer'   => 'Yes, fencing is one of the safest sports. All participants wear full protective equipment including masks, jackets, gloves, chest protectors and plastrons. The sport has strict safety rules and is supervised by qualified coaches. All equipment is sanitized before use. A study in for the 2008 Olympic Games showed only 5 sports has fewer injuries than Fencing. (<a href="https://journals.sagepub.com/doi/10.1177/0363546509339357">Study</a>). The most common injury in fencing is a twisted ankle and foootwork training is provided to minimise the risk.',
 		),
 		array(
 			'question' => 'Is fencing safe for children?',
 			'answer'   => 'Yes, fencing is very safe for children. Junior fencers wear the same full protective equipment as adults, and sessions are supervised by qualified coaches with safeguarding training. The sport teaches discipline and control, making it safer than many contact sports like rugby or football.',
 		),
 		array(
+			'question' => 'Does it hurt when you are hit?',
+			'answer'   => 'In a typical fencing bout getting hit does not hurt. Beginners are trained to use the equipment safely and normal usage does not hurt. Sometimes its possible that a hit may be harder than usual by accident which may leave a small bruise. Often you don\'t notice you have been hit especially when using the electric scoring equipment. All female participants must wear chest protection but all participants have the option to wear them which gives additional protection from harder hits.',
+		),
+		array(
 			'question' => 'What safety equipment is provided?',
-			'answer'   => 'Kingston Fencing Club provides all safety equipment including protective masks with safety-certified mesh, fencing jackets, plastrons (chest protectors), and gloves. All equipment meets British Fencing safety standards.',
+			'answer'   => 'Kingston Fencing Club provides all safety equipment including protective masks with safety-certified mesh, fencing jackets, plastrons, chest protectors, and gloves. All equipment meets British Fencing safety standards.',
+		),
+		array(
+			'question' => 'What are your child safeguarding precautions?',
+			'answer'   => 'All coaches are regularly DBS checked by the club and must follow the club\'s <a href="/policies">Polices</a> for Safeguarding and Health and Safety. All coaches are certified by the sports governing body British Fencing and can be found on the British Fencing Coach Register. The club had an apointed Welfare Officer who ensures best practice is followed in this area.',
 		),
 	);
 }
@@ -1160,16 +1164,16 @@ function kfc_get_courses_faqs() {
 function kfc_get_membership_faqs() {
 	return array(
 		array(
-			'question' => 'How much does membership cost?',
-			'answer'   => 'Adult membership is £110 per quarter. Junior, student, and senior membership is £90 per quarter. Members of affiliated clubs receive a 50% discount. Fees are paid every 3 months from your join date, not aligned with school terms.',
+			'question' => 'What if I start my membership halfway through term? Am I paying for the full term?',
+			'answer'   => 'Membership is not paid by in line with school terms as the club meets all year round. Instead membership is paid every 90 days. The membership system will automatically remind you whe its due',
 		),
 		array(
-			'question' => 'How do I join Kingston Fencing Club?',
-			'answer'   => 'Apply for membership through the Membermojo online platform. The system sends automatic reminders when your membership renewal is due.',
+			'question' => 'Do I have to join while I am on a course?',
+			'answer'   => 'While you are on a course you are covered by the course fees. We hope you decide to continue after the course and become a full member.',
 		),
 		array(
-			'question' => 'What do members get?',
-			'answer'   => 'Members can fence on Monday and Tuesday nights, use club equipment including electric equipment, participate in group training sessions, receive one-on-one coaching from qualified coaches, and receive discounts at affiliated clubs.',
+			'question' => 'Can I get a discount as I may not be able to attend every week?',
+			'answer'   => 'Membership gives you the right to attend any week on Mondays or Tuesdays and is not an attendance fee. Your membership payment ensures the club can meet its running costs even if you\'re not able to come every week.',
 		),
 		array(
 			'question' => 'When can members fence?',
@@ -1177,11 +1181,7 @@ function kfc_get_membership_faqs() {
 		),
 		array(
 			'question' => 'Do I need insurance to fence at the club?',
-			'answer'   => 'Yes, all members must join British Fencing for required insurance coverage. The club only provides insurance for course participants and officials, not members. New members receive 90 free introductory days with British Fencing membership, after which you can choose recreational or competition level membership.',
-		),
-		array(
-			'question' => 'Can visitors from other clubs attend?',
-			'answer'   => 'Yes, visitors from other fencing clubs can fence on Monday or Tuesday evenings for £15 per evening, or purchase a visitor pass. However, visitors are not entitled to use club equipment or receive coaching at the club and must bring their own equipment.',
+			'answer'   => 'Yes, but that can be acquired through British Fencing. All members are required to join British Fencing for required insurance coverage. The club only provides insurance for course participants and officials, not members. New members receive 90 free introductory days with British Fencing membership, after which you can choose recreational or competition level membership.',
 		),
 	);
 }
