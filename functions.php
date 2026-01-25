@@ -719,26 +719,6 @@ function kfc_replace_logo_with_webp( $content ) {
 }
 
 /**
- * PERFORMANCE FIX: Exclude Smart Post Carousel from W3TC lazy loading
- *
- * W3TC's lazy loading interferes with the carousel's built-in Swiper lazy loading.
- * This tells W3TC to skip carousel images so Swiper can handle lazy loading properly.
- * This maintains performance while fixing the image loading issue.
- */
-add_filter( 'w3tc_lazyload_can_process', 'kfc_exclude_carousel_from_w3tc_lazyload', 10, 2 );
-
-function kfc_exclude_carousel_from_w3tc_lazyload( $can_process, $tag_string ) {
-	// Don't process images that are part of Smart Post Carousel
-	if ( strpos( $tag_string, 'sp-pcp' ) !== false ||
-	     strpos( $tag_string, 'pcp_wrapper' ) !== false ||
-	     strpos( $tag_string, 'pcp-post-thumb' ) !== false ) {
-		return false;
-	}
-
-	return $can_process;
-}
-
-/**
  * LOCAL SEO: Add LocalBusiness/SportsActivityLocation Schema Markup
  *
  * Outputs JSON-LD structured data for Google to understand this is a local

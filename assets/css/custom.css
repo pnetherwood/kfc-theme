@@ -3457,3 +3457,12 @@ ul.document-list li a:hover {
 		padding-left: 2rem !important;
 	}
 }
+
+/* ===============================================
+   FORMINATOR PLUGIN - HIDDEN FIELD FIX
+   =============================================== */
+
+/* Remove margin from hidden conditional fields to prevent gaps in forms */
+.forminator-row.forminator-hidden {
+	margin-bottom: 0 !important;
+}
