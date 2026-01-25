@@ -1870,6 +1870,14 @@ body.home .wp-site-blocks {
 	font-family: inherit !important;
 }
 
+/* Override MailPoet's width: 100% to prevent border overflow */
+#mailpoet_form_1 {
+	width: auto !important;
+	max-width: 100% !important;
+	box-sizing: border-box !important;
+	border-radius: 12px !important;
+}
+
 /* Heading */
 .mailpoet_form .mailpoet-heading {
 	color: var(--color-primary) !important;
@@ -2018,41 +2026,44 @@ body.home .wp-site-blocks {
 }
 
 /* ==========================================================================
-   WP Responsive Recent Post Slider - Slick Carousel Gap Fix
+   Membership Page Patterns - Border Radius
    ========================================================================== */
 
-/* Reduce bottom margin/padding on slider container */
-.wppsac-post-slider {
-	margin-bottom: 0 !important;
-	padding-bottom: 0 !important;
+/* Image Text CTA pattern - add border radius */
+.wp-block-media-text.alignwide[style*="border"] {
+	border-radius: 12px !important;
+	overflow: hidden !important;
 }
 
-/* Remove extra space from slides container */
-.wppsac-post-slider .slick-list {
-	margin-bottom: 0 !important;
-	padding-bottom: 0 !important;
+/* Text Block pattern - add border radius */
+.wp-block-group.alignwide[style*="border"] {
+	border-radius: 12px !important;
 }
 
-/* Reduce gap above navigation dots */
-.wppsac-post-slider .slick-dots {
-	margin-top: 15px !important;
-	padding-top: 0 !important;
+/* ==========================================================================
+   Image Text CTA Animation - Hover Zoom Effect
+   ========================================================================== */
+
+/* Smooth transition on image */
+.wp-block-media-text.alignwide[style*="border"] .wp-block-media-text__media img {
+	transition: transform 0.6s ease-out;
+	transform: scale(1);
 }
 
-/* Remove bottom margin from individual slides */
-.wppsac-post-slides {
-	margin-bottom: 0 !important;
-	padding-bottom: 0 !important;
+/* Zoom in on hover */
+.wp-block-media-text.alignwide[style*="border"]:hover .wp-block-media-text__media img {
+	transform: scale(1.08);
 }
 
-/* Ensure slide content doesn't add extra spacing */
-.wppsac-post-content-position {
-	margin-bottom: 0 !important;
-}
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+	.wp-block-media-text.alignwide[style*="border"] .wp-block-media-text__media img {
+		transition: none !important;
+	}
 
-/* Target the post content wrapper */
-.wppsac-post-content-left {
-	padding-bottom: 10px !important;
+	.wp-block-media-text.alignwide[style*="border"]:hover .wp-block-media-text__media img {
+		transform: scale(1) !important;
+	}
 }
 
 /* ==========================================================================
@@ -2308,6 +2319,7 @@ button.LoadMoreButton:active {
 .wp-block-group.has-light-background-color .wp-block-media-text figure {
 	display: flex;
 	align-items: stretch;
+	height: 100%;
 	order: 1;
 }
 
@@ -2359,6 +2371,20 @@ button.LoadMoreButton:active {
 	.wp-block-group.has-light-background-color .wp-block-media-text {
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
+	}
+
+	/* Ensure figure fills full height on tablet */
+	.wp-block-group.has-light-background-color .wp-block-media-text figure {
+		height: 100%;
+		align-items: stretch;
+	}
+
+	/* Ensure image fills figure and uses object-fit cover on tablet */
+	.wp-block-group.has-light-background-color .wp-block-media-text figure img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
 	}
 
 	/* Keep container padding but override the inline styles to reduce it */
