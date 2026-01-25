@@ -719,51 +719,23 @@ function kfc_replace_logo_with_webp( $content ) {
 }
 
 /**
- * PERFORMANCE FIX: Prevent W3TC lazy loading from breaking Smart Post Carousel
+ * PERFORMANCE FIX: Exclude Smart Post Carousel from W3TC lazy loading
  *
- * W3TC's lazy loading conflicts with the carousel's built-in lazy loading.
- * This function removes W3TC's lazy loading attributes from carousel images after
- * W3TC has processed the page, so it doesn't interfere with minify or other operations.
+ * W3TC's lazy loading interferes with the carousel's built-in Swiper lazy loading.
+ * This tells W3TC to skip carousel images so Swiper can handle lazy loading properly.
+ * This maintains performance while fixing the image loading issue.
  */
-add_filter( 'the_content', 'kfc_fix_carousel_lazy_loading', 999 );
+add_filter( 'w3tc_lazyload_can_process', 'kfc_exclude_carousel_from_w3tc_lazyload', 10, 2 );
 
-function kfc_fix_carousel_lazy_loading( $content ) {
-	// Skip if in admin
-	if ( is_admin() ) {
-		return $content;
+function kfc_exclude_carousel_from_w3tc_lazyload( $can_process, $tag_string ) {
+	// Don't process images that are part of Smart Post Carousel
+	if ( strpos( $tag_string, 'sp-pcp' ) !== false ||
+	     strpos( $tag_string, 'pcp_wrapper' ) !== false ||
+	     strpos( $tag_string, 'pcp-post-thumb' ) !== false ) {
+		return false;
 	}
 
-	// Skip if content is empty or not a string
-	if ( empty( $content ) || ! is_string( $content ) ) {
-		return $content;
-	}
-
-	// Skip if content doesn't have carousel
-	if ( strpos( $content, 'sp-pcp-carousel' ) === false ) {
-		return $content;
-	}
-
-	// Remove W3TC lazy loading attributes from carousel images
-	// W3TC adds data-src and a placeholder src, we need to restore the real src
-	$content = preg_replace_callback(
-		'/<img([^>]*class="[^"]*(?:sp-pcp|pcp_wrapper)[^"]*"[^>]*)>/i',
-		function( $matches ) {
-			$img_tag = $matches[0];
-
-			// If W3TC added lazy loading, fix it
-			if ( strpos( $img_tag, 'data-src=' ) !== false ) {
-				// Move data-src back to src
-				$img_tag = preg_replace( '/src="[^"]*"\s*data-src="([^"]+)"/', 'src="$1"', $img_tag );
-				// Remove any remaining data-src
-				$img_tag = preg_replace( '/\s*data-src="[^"]*"/', '', $img_tag );
-			}
-
-			return $img_tag;
-		},
-		$content
-	);
-
-	return $content;
+	return $can_process;
 }
 
 /**
