@@ -325,6 +325,60 @@ function kfc_register_block_patterns() {
 			)
 		);
 	}
+
+	// Register Image Text CTA pattern manually
+	$image_text_cta_file = get_theme_file_path( 'patterns/image-text-cta.php' );
+	if ( file_exists( $image_text_cta_file ) ) {
+		ob_start();
+		include $image_text_cta_file;
+		$image_text_cta_pattern = ob_get_clean();
+
+		register_block_pattern(
+			'kfc-theme/image-text-cta',
+			array(
+				'title'       => __( 'Image Text CTA', 'kfc-theme' ),
+				'description' => __( 'Image on left with text and call-to-action button on right, with light background and blue border', 'kfc-theme' ),
+				'content'     => $image_text_cta_pattern,
+				'categories'  => array( 'featured', 'kfc-theme' ),
+			)
+		);
+	}
+
+	// Register Document List pattern manually
+	$document_list_file = get_theme_file_path( 'patterns/document-list.php' );
+	if ( file_exists( $document_list_file ) ) {
+		ob_start();
+		include $document_list_file;
+		$document_list_pattern = ob_get_clean();
+
+		register_block_pattern(
+			'kfc-theme/document-list',
+			array(
+				'title'       => __( 'Document List Section', 'kfc-theme' ),
+				'description' => __( 'A section for displaying a list of documents or policies with icons and styled heading', 'kfc-theme' ),
+				'content'     => $document_list_pattern,
+				'categories'  => array( 'text', 'kfc-theme' ),
+			)
+		);
+	}
+
+	// Register Text Block pattern manually
+	$text_block_file = get_theme_file_path( 'patterns/text-block.php' );
+	if ( file_exists( $text_block_file ) ) {
+		ob_start();
+		include $text_block_file;
+		$text_block_pattern = ob_get_clean();
+
+		register_block_pattern(
+			'kfc-theme/text-block',
+			array(
+				'title'       => __( 'Text Block', 'kfc-theme' ),
+				'description' => __( 'Text content block with light background and blue border, matching CTA style', 'kfc-theme' ),
+				'content'     => $text_block_pattern,
+				'categories'  => array( 'featured', 'kfc-theme' ),
+			)
+		);
+	}
 }
 add_action( 'init', 'kfc_register_block_patterns' );
 
@@ -1131,6 +1185,10 @@ function kfc_get_courses_faqs() {
 		array(
 			'question' => 'What happens after completing a beginner course?',
 			'answer'   => 'All people who take the course can move on to become members of the club if they wish to continue fencing. Training and coaching continue with our qualified coaches on a weekly basis in either group or individual lessons. Equipment is available to use during club evenings including electric equipment.',
+		),
+		array(
+			'question' => 'Do I need insurance for a course?',
+			'answer'   => 'New fencers qualify for a free 90-day Introduction Membership, which they must register individually via bf.sport80.com before or at the first session.',
 		),
 		array(
 			'question' => 'Is fencing safe?',

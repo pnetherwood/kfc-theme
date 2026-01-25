@@ -1653,6 +1653,19 @@ body.home .wp-site-blocks {
    Forminator Forms - Contact Form Styling
    ========================================================================== */
 
+/* Contact Form Group Container */
+.contact-form-container {
+	margin: 2rem auto !important;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+	border: 1px solid #0099ff !important;
+}
+
+@media (max-width: 768px) {
+	.contact-form-container {
+		margin: 1rem auto !important;
+	}
+}
+
 /* Form container */
 .forminator-ui.forminator-custom-form {
 	font-family: inherit;
@@ -1684,6 +1697,26 @@ body.home .wp-site-blocks {
 	font-size: 1rem !important;
 	color: #212529 !important;
 	transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Dropdown specific styling - remove grey background */
+.forminator-ui .forminator-select,
+.forminator-ui .forminator-select input,
+.forminator-ui select {
+	background-color: #ffffff !important;
+}
+
+/* Dropdown wrapper */
+.forminator-ui .forminator-select--wrapper,
+.forminator-ui .forminator-multiselect--wrapper {
+	background-color: #ffffff !important;
+}
+
+/* Select2 dropdown styling - remove grey background */
+.forminator-ui .select2-selection,
+.forminator-ui .select2-selection--single,
+.forminator-ui .select2-selection--multiple {
+	background-color: #ffffff !important;
 }
 
 /* Input focus state */
@@ -1784,6 +1817,48 @@ body.home .wp-site-blocks {
 .forminator-ui .forminator-radio label,
 .forminator-ui .forminator-checkbox label {
 	color: #212529 !important;
+}
+
+/* Help/Description text */
+.forminator-ui .forminator-description,
+.forminator-ui .forminator-helper-text {
+	font-size: 0.875rem !important;
+	color: #6c757d !important;
+	margin-top: 6px !important;
+	line-height: 1.5 !important;
+}
+
+/* Field row for side-by-side fields */
+.forminator-ui .forminator-row {
+	display: flex !important;
+	gap: 1.5rem !important;
+	flex-wrap: wrap !important;
+}
+
+.forminator-ui .forminator-row .forminator-col {
+	flex: 1 !important;
+	min-width: 250px !important;
+}
+
+@media (max-width: 768px) {
+	.forminator-ui .forminator-row {
+		flex-direction: column !important;
+		gap: 0 !important;
+	}
+}
+
+/* Heading within form */
+.forminator-ui h3 {
+	font-size: 1.25rem !important;
+	font-weight: 600 !important;
+	color: #212529 !important;
+	margin-top: 1.5rem !important;
+	margin-bottom: 1rem !important;
+}
+
+/* First heading in form - reduce top margin */
+.forminator-ui .forminator-field:first-of-type h3 {
+	margin-top: 0 !important;
 }
 
 /* ==========================================================================
@@ -2982,6 +3057,7 @@ button.LoadMoreButton:active {
 /* FAQ container */
 .kfc-faq-accordion {
 	margin: 40px 0;
+	max-width: var(--wp--style--global--content-size, 1200px);
 }
 
 /* Individual FAQ item (details element) */
@@ -3081,5 +3157,277 @@ button.LoadMoreButton:active {
 	
 	.kfc-faq-answer {
 		padding: 0 15px 15px 45px;
+	}
+}
+
+/* ==========================================================================
+   Membership Benefits Pattern
+   ========================================================================== */
+
+/* Benefits grid - ensure equal height cards */
+.membership-benefit-card {
+	display: flex;
+	flex-direction: column;
+}
+
+.membership-benefit-card > .wp-block-group {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	transition: all 0.3s ease;
+}
+
+/* Icon styling in benefits */
+.membership-benefit-card .wp-block-image {
+	margin-bottom: 1rem;
+}
+
+.membership-benefit-card .wp-block-image img {
+	opacity: 0.9;
+	transition: all 0.3s ease;
+}
+
+.membership-benefit-card:hover .wp-block-image img {
+	opacity: 1;
+	transform: scale(1.1);
+}
+
+/* Ensure text content fills space */
+.membership-benefit-card .wp-block-heading {
+	margin-bottom: 0.75rem;
+}
+
+/* Mobile responsive for benefits */
+@media (max-width: 782px) {
+	.membership-benefit-card {
+		flex-basis: 100% !important;
+	}
+}
+
+/* ==========================================================================
+   Membership Pricing Pattern
+   ========================================================================== */
+
+/* Pricing cards - ensure equal height */
+.pricing-card {
+	display: flex;
+	flex-direction: column;
+}
+
+.pricing-card > .wp-block-group {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	transition: all 0.3s ease;
+	position: relative;
+	padding: 12px 16px !important;
+}
+
+.pricing-card > .wp-block-group.has-white-background-color.has-primary-border-color {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Reduce spacing inside cards */
+.pricing-card .wp-block-group {
+	gap: 6px !important;
+}
+
+/* Price text smaller */
+.pricing-card .has-primary-color {
+	font-size: 24px !important;
+}
+
+/* Separator in pricing cards */
+.pricing-card .wp-block-separator {
+	margin: 8px 0 !important;
+	opacity: 0.3;
+}
+
+/* Reduce heading sizes */
+.pricing-card h3 {
+	font-size: 1.1rem !important;
+	margin-bottom: 4px !important;
+}
+
+/* Smaller paragraph text */
+.pricing-card p.has-small-font-size {
+	font-size: 0.85rem !important;
+}
+
+/* Tighter spacing in price group */
+.pricing-card .wp-block-group > .wp-block-group {
+	margin: 8px 0 !important;
+}
+
+/* Reduce gaps between pricing cards */
+.wp-block-columns.alignwide:has(.pricing-card) {
+	gap: 16px !important;
+	margin-top: 16px !important;
+}
+
+/* Force 3-column grid layout for pricing cards */
+.wp-block-columns:has(.pricing-card) {
+	display: grid !important;
+	grid-template-columns: repeat(3, 1fr) !important;
+}
+
+/* Reduce section padding */
+.wp-block-group.alignfull.has-light-background-color:has(+ * .pricing-card),
+.wp-block-group.alignfull.has-light-background-color:has(.pricing-card) {
+	padding-top: 24px !important;
+	padding-bottom: 24px !important;
+}
+
+/* Mobile responsive for pricing cards */
+@media (max-width: 782px) {
+	/* Single column on mobile */
+	.wp-block-columns:has(.pricing-card) {
+		grid-template-columns: 1fr !important;
+	}
+
+	.pricing-card > .wp-block-group {
+		margin-bottom: 0;
+		padding: 10px 14px !important;
+	}
+}
+
+/* ==========================================================================
+   Insurance and British Fencing Info Cards
+   ========================================================================== */
+
+/* Insurance info card hover effect */
+.insurance-covered-list {
+	padding-left: 1.5rem;
+	margin: 1.5rem 0;
+}
+
+.insurance-covered-list li {
+	margin-bottom: 0.75rem;
+	line-height: 1.6;
+}
+
+/* British Fencing card */
+.wp-block-group.has-white-background-color.has-primary-border-color {
+	transition: all 0.3s ease;
+}
+
+/* Hover effect for pricing cards - enhanced shadow and border, no lift */
+.pricing-card .wp-block-group.has-white-background-color.has-primary-border-color {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+	transition: all 0.3s ease !important;
+	border: 1px solid #0099ff !important;
+}
+
+.pricing-card:hover .wp-block-group.has-white-background-color.has-primary-border-color {
+	box-shadow: 0 8px 24px rgba(0, 153, 255, 0.3) !important;
+	border: 2px solid #0088ee !important;
+	background-color: #fafbff !important;
+	transform: none !important;
+}
+
+/* Hover effect for benefit cards - enhanced shadow and border, no lift */
+.membership-benefit-card .wp-block-group.has-light-background-color.has-primary-border-color {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+	transition: all 0.3s ease !important;
+	border: 1px solid #0099ff !important;
+}
+
+.membership-benefit-card:hover .wp-block-group.has-light-background-color.has-primary-border-color {
+	box-shadow: 0 6px 20px rgba(0, 153, 255, 0.25) !important;
+	border: 2px solid #0088ee !important;
+	background-color: #ffffff !important;
+	transform: none !important;
+}
+
+/* Responsive adjustments for British Fencing card */
+@media (max-width: 782px) {
+	.wp-block-group.has-white-background-color.has-primary-border-color .wp-block-columns {
+		flex-direction: column;
+	}
+
+	.wp-block-group.has-white-background-color.has-primary-border-color .wp-block-column {
+		flex-basis: 100% !important;
+		width: 100% !important;
+	}
+}
+
+/* ==========================================================================
+   Document List Pattern - Enhanced List Layout
+   ========================================================================== */
+
+/* Document list section container */
+.document-list-section {
+	margin-top: 2rem !important;
+	margin-bottom: 0.5rem !important;
+}
+
+/* First section - remove extra top margin */
+.document-list-section:first-of-type {
+	margin-top: 0 !important;
+}
+
+/* Document section heading styling */
+.document-section-heading {
+	font-size: 1.3rem !important;
+	font-weight: 700 !important;
+	color: #212529 !important;
+	margin-top: 0 !important;
+	margin-bottom: 1rem !important;
+	padding: 1rem 1.25rem !important;
+	background-color: #f8f9fa !important;
+	border-left: 4px solid #0099ff !important;
+	border-radius: 4px !important;
+}
+
+/* Document lists styling */
+ul.document-list {
+	list-style: none !important;
+	padding-left: 0 !important;
+	margin-bottom: 1.5rem !important;
+}
+
+ul.document-list li {
+	margin-bottom: 0.75rem !important;
+	padding-left: 2.5rem !important;
+	position: relative !important;
+}
+
+/* Document icon using SVG */
+ul.document-list li::before {
+	content: "";
+	position: absolute;
+	left: 0.5rem;
+	top: 0.35rem;
+	width: 1.25rem;
+	height: 1.25rem;
+	background-image: url('../images/icon-document.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+/* Link styling */
+ul.document-list li a {
+	color: #0099ff !important;
+	text-decoration: none !important;
+	font-weight: 500 !important;
+	transition: color 0.2s ease !important;
+	display: inline-block !important;
+}
+
+ul.document-list li a:hover {
+	color: #0077cc !important;
+	text-decoration: underline !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.document-section-heading {
+		font-size: 1.15rem !important;
+		padding: 0.875rem 1rem !important;
+	}
+
+	ul.document-list li {
+		padding-left: 2rem !important;
 	}
 }
