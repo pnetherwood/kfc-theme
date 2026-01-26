@@ -1135,12 +1135,20 @@ function kfc_get_courses_faqs() {
 			'answer'   => 'All fencing courses take place at Sports Hall, Coombe Boys School, College Gardens, New Malden, Surrey, KT3 6NU. See <a href="/meeting-place">Meeting Place</a> for directions and parking.',
 		),
 		array(
+			'question' => 'I can\'t attend one of the sessions on the course due to a prior commitment. What should I do?',
+			'answer'   => 'Book and attend the course and then inform the coach on the first session. They will be able to help you catchup on what you\'ve missed.',
+		),
+		array(
+			'question' => 'Can I join a course that\'s just started?',
+			'answer'   => 'If a course recently started, contact the club about potential late enrollment. If its only a week or two in we can norammly accomodate you.',
+		),
+		array(
 			'question' => 'What happens after completing a beginner course?',
-			'answer'   => 'All people who take the course can move on to become members of the club if they wish to continue fencing. Training and coaching continue with our qualified coaches on a weekly basis in either group or individual lessons. Equipment is available to use during club evenings including electric equipment.',
+			'answer'   => 'All people who take the course can move on to become members of the club if they wish to continue fencing. Training and coaching continue with our qualified coaches on a weekly basis in either group or individual lessons. Equipment is available to use during club evenings including electric equipment. To find out more see <a href="/membership">Membership</a>.',
 		),
 		array(
 			'question' => 'Do I need insurance for a course?',
-			'answer'   => 'New fencers qualify for a free 90-day Introduction Membership, which they must register individually via bf.sport80.com before or at the first session.',
+			'answer'   => 'New fencers qualify for a free 90-day Introduction Membership, which they must register individually using this link: <a href="https://www.britishfencing.com/members/membership-info/membership-types/introduction-membership-category/">BF Introductory Membership</a> before or at the first session.',
 		),
 		array(
 			'question' => 'Is fencing safe?',
@@ -1191,7 +1199,7 @@ function kfc_get_membership_faqs() {
 		),
 		array(
 			'question' => 'Do I need insurance to fence at the club?',
-			'answer'   => 'Yes, but that can be acquired through British Fencing. All members are required to join British Fencing for required insurance coverage. The club only provides insurance for course participants and officials, not members. New members receive 90 free introductory days with British Fencing membership, after which you can choose recreational or competition level membership.',
+			'answer'   => 'Yes, but that can be acquired through British Fencing. All members are required to join British Fencing for required insurance coverage. The club only provides insurance for course participants and officials, not members. New members receive 90 free introductory days with British Fencing membership, after which you can choose recreational or competition level membership. See this link: <a href="https://www.britishfencing.com/members/membership-info/membership-types/introduction-membership-category/">BF Introductory Membership</a> to sign up to free 90-day introductory membership to BF which gives you the necessary insurance cover.',
 		),
 	);
 }
@@ -1213,32 +1221,32 @@ function kfc_get_contact_faqs() {
 			'answer'   => 'Juniors must be 10 years or older to participate in junior classes or beginner courses.',
 		),
 		array(
-			'question' => 'My child has fenced before. Can we just turn up?',
-			'answer'   => 'No, please contact the club first to check junior session availability. Walk-ins cannot be accommodated due to limited space. The first trial night is free; ongoing participation requires membership.',
+			'question' => 'Which session should my child join for fencing lessons?',
+			'answer'   => 'New fencers must register for a beginner course or introductory lesson first. Existing junior fencers can join Monday (6:30-8:00 PM Epee, ages 10-17) or Tuesday (6:30-7:30 PM Foil/Epee, ages 10-17) sessions after contacting the club to confirm space availability.',
 		),
 		array(
-			'question' => 'Which session should my child join for fencing lessons?',
-			'answer'   => 'New fencers must register for a beginner course first. Existing junior fencers can join Monday (6:30-8:00 PM Epee, ages 10-17) or Tuesday (6:30-7:30 PM Foil/Epee, ages 10-17) sessions after contacting the club to confirm space availability.',
+			'question' => 'My child has fenced before. Can we just turn up?',
+			'answer'   => 'Please contact the club first to check junior session availability and we will arrange a convenient time for a trial. The first trial night is free; ongoing participation requires membership. Walk-ins cannot be accommodated due to coaches already committed to lessons and classes.',
 		),
 		array(
 			'question' => 'I\'m looking to restart fencing after a long break. What do you advise?',
-			'answer'   => 'If you\'re new or rusty, enroll in a beginner course via the courses page. Experienced adult fencers can attend Monday or Tuesday evening sessions (7:00-9:30 PM) to refresh their skills. Club equipment is available for members.',
+			'answer'   => 'If you\'re new or rusty, enroll in a beginner course via the courses page. However, if you have had alot of experience before then a beginners class may be too basic. Junior fencers shoudl check the anser above. If you are an adult, the best thing to do is just turn up and join in. You\'d be surprised how quickly you can get back into it. Experienced adult fencers can attend Monday or Tuesday evening sessions (7:00-9:30 PM) to refresh their skills. Club equipment is available for members.',
 		),
 		array(
 			'question' => 'When is the next taster session or course?',
 			'answer'   => 'All course and class information appears on the courses page with "Book Now" options for available sessions. Sign up for the mailing list if no courses are currently listed to be notified when new dates are published.',
 		),
 		array(
-			'question' => 'How do I book a course?',
-			'answer'   => 'Available courses appear on the courses page with "Book Now" options. Click the course you\'re interested in to see full details and book online. If a course recently started, contact the club about potential late enrollment.',
-		),
-		array(
 			'question' => 'What time and date is the next course and what do I need to bring?',
 			'answer'   => 'Click the specific course link on the courses page for complete details about timing, dates, pricing, and required items to bring.',
 		),
 		array(
-			'question' => 'I\'m having payment problems. What should I do?',
-			'answer'   => 'If you\'re having trouble paying on any of our systems please consult our <a href="https://kingstonfencing.co.uk/payment-problems/">Payment Problems page</a>.',
+			'question' => 'I have some old kit that I\'m not using anymore. Does the club want it?',
+			'answer'   => 'We are happy to take donations of nearlly new equipment or clothing. We are unlikely to take very old equipemnt and clothing may not be safe (althoug fencing bags may be useful). Please bring the items to a Monday or Teusaday evening session and we\'d be happy to take a look. Although we often take quality donations, the club doesn\'t noramlly but second hand equipment and suggests you use an auction site.',
+		),
+		array(
+			'question' => 'I\'m having trouble paying  with my credit card. What should I do?',
+			'answer'   => 'If you\'re having trouble paying on any of our systems please consult our <a href="/payment-problems">Payment Problems page</a>.',
 		),
 	);
 }
