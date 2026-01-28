@@ -63,8 +63,31 @@ function kfc_theme_scripts() {
 		array(),
 		wp_get_theme()->get( 'Version' )
 	);
+
+	// Enqueue scroll to top script
+	wp_enqueue_script(
+		'kfc-scroll-to-top',
+		get_theme_file_uri( 'assets/js/scroll-to-top.js' ),
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true // Load in footer
+	);
 }
 add_action( 'wp_enqueue_scripts', 'kfc_theme_scripts' );
+
+/**
+ * Output scroll to top button in footer
+ */
+function kfc_scroll_to_top_button() {
+	?>
+	<button id="kfc-scroll-to-top" aria-label="<?php esc_attr_e( 'Scroll to top', 'kfc-theme' ); ?>" title="<?php esc_attr_e( 'Scroll to top', 'kfc-theme' ); ?>">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+			<path d="M12 4l-8 8h5v8h6v-8h5z"/>
+		</svg>
+	</button>
+	<?php
+}
+add_action( 'wp_footer', 'kfc_scroll_to_top_button' );
 
 /**
  * Recent News Shortcode
@@ -510,6 +533,14 @@ function kfc_optimize_payment_scripts() {
 		wp_deregister_script( 'sourcebuster-js' );
 		wp_dequeue_script( 'wc-order-attribution' );
 		wp_deregister_script( 'wc-order-attribution' );
+
+		// Disable core WooCommerce frontend scripts (not needed on info pages)
+		wp_dequeue_script( 'woocommerce' );
+		wp_deregister_script( 'woocommerce' );
+		wp_dequeue_script( 'wc-jquery-blockui' );
+		wp_deregister_script( 'wc-jquery-blockui' );
+		wp_dequeue_script( 'js-cookie' );
+		wp_deregister_script( 'js-cookie' );
 	}
 }
 

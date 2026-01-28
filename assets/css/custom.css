@@ -3471,3 +3471,115 @@ ul.document-list li a:hover {
 .forminator-row.forminator-hidden {
 	margin-bottom: 0 !important;
 }
+
+/* ===============================================
+   WORDPRESS LIGHTBOX - SCROLL FIX
+   =============================================== */
+
+/* Fix: WordPress lightbox overlay blocks scrolling even when hidden.
+   The overlay has visibility:hidden but pointer-events:auto (browser default),
+   which captures scroll events. Set pointer-events:none when inactive.
+   Uses !important to override browser defaults and any inline styles. */
+.wp-lightbox-overlay:not(.active),
+.wp-lightbox-overlay:not(.active) .scrim {
+	pointer-events: none !important;
+}
+
+/* ===============================================
+   GALLERY - HIDE CAPTIONS ON MOBILE
+   =============================================== */
+
+/* Hide image captions and gradient overlay on mobile to prevent them
+   from obscuring images and blocking click/tap interactions */
+@media (max-width: 782px) {
+	.wp-block-gallery figcaption,
+	.wp-block-image figcaption,
+	.blocks-gallery-caption,
+	.wp-element-caption {
+		display: none !important;
+	}
+
+	/* Remove the gradient/blur overlay behind captions */
+	.wp-block-gallery.has-nested-images figure.wp-block-image:has(figcaption)::before {
+		content: none !important;
+	}
+}
+
+/* ==========================================================================
+   Scroll to Top Button
+   ========================================================================== */
+
+#kfc-scroll-to-top {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	width: 50px;
+	height: 50px;
+	background: var(--gradient-primary, linear-gradient(135deg, #0099ff 0%, #0077cc 100%));
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(20px);
+	transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.2s ease;
+	z-index: 9999;
+}
+
+#kfc-scroll-to-top.visible {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+#kfc-scroll-to-top:hover {
+	background: var(--gradient-hover, linear-gradient(135deg, #00aaff 0%, #0088ee 100%));
+	box-shadow: 0 6px 16px rgba(0, 153, 255, 0.4);
+	transform: translateY(-2px);
+}
+
+#kfc-scroll-to-top.visible:hover {
+	transform: translateY(-2px);
+}
+
+#kfc-scroll-to-top:active {
+	transform: translateY(0);
+}
+
+/* Arrow icon */
+#kfc-scroll-to-top svg {
+	width: 24px;
+	height: 24px;
+	fill: #ffffff;
+}
+
+/* Mobile adjustments */
+@media (max-width: 782px) {
+	#kfc-scroll-to-top {
+		bottom: 20px;
+		right: 20px;
+		width: 44px;
+		height: 44px;
+	}
+
+	#kfc-scroll-to-top svg {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+	#kfc-scroll-to-top {
+		transition: opacity 0.1s ease, visibility 0.1s ease;
+	}
+
+	#kfc-scroll-to-top:hover,
+	#kfc-scroll-to-top.visible:hover {
+		transform: translateY(0);
+	}
+}
