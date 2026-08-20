@@ -458,6 +458,12 @@ add_action( 'wp_footer', 'kfc_button_style_fix' );
 function kfc_product_short_description_shortcode() {
 	global $product;
 
+	// The global is not reliably a WC_Product outside the loop, so verify the
+	// type rather than just truthiness before calling methods on it.
+	if ( ! is_a( $product, 'WC_Product' ) ) {
+		$product = wc_get_product( get_the_ID() );
+	}
+
 	if ( ! $product ) {
 		return '';
 	}
@@ -1039,7 +1045,7 @@ function kfc_course_event_schema() {
 	}
 
 	global $product;
-	if ( ! $product ) {
+	if ( ! is_a( $product, 'WC_Product' ) ) {
 		$product = wc_get_product( get_the_ID() );
 	}
 
@@ -1210,7 +1216,7 @@ function kfc_get_courses_faqs() {
 		array(
 			'question' => 'Does it hurt when you are hit?',
 			'answer'   => 'In a typical fencing bout getting hit does not hurt. Beginners are trained to use the equipment safely and normal usage does not hurt. '
-				. 'Sometimes its possible that a hit may be harder than usual by accident which may leave a small bruise. '
+				. 'Sometimes it\'s possible that a hit may be harder than usual by accident which may leave a small bruise. '
 				. 'Often you don\'t notice you have been hit especially when using the electric scoring equipment. '
 				. 'All female participants must wear chest protection but all participants have the option to wear chest protectors too which gives additional protection from harder hits.',
 		),
@@ -1221,9 +1227,16 @@ function kfc_get_courses_faqs() {
 		),
 		array(
 			'question' => 'What are your child safeguarding precautions?',
-			'answer'   => 'All coaches are regularly DBS checked by the club and must follow the club\'s <a href="/policies">Polices</a> for Safeguarding and Health and Safety. '
+			'answer'   => 'All coaches are regularly DBS checked by the club and must follow the club\'s <a href="/policies">Policies</a> for Safeguarding and Health and Safety. '
 				. 'All coaches are certified by the sports governing body British Fencing and can be found on the <a href="https://www.britishfencing.com/accredited-coaches/">British Fencing Coach Register</a>. '
-				. 'The club had an apointed Welfare Officer who ensures best practice is followed in this area.',
+				. 'The club has an appointed Welfare Officer who ensures best practice is followed in this area.',
+		),
+		array(
+			'question' => 'Is fencing an expensive sport?',
+			'answer'   => 'KFC club membership is cheaper than most gym memberships and cheaper than most martial arts clubs like Judo or Karate. '
+				. 'All equipment is included in membership fees which makes it relatively cheap to learn and get started. '
+				. 'You can continue to use the club kit for as long as you are a member. If you really enjoy it you may want to start buying your own equipment. '
+				. 'Starter kits start from £600-£750 but since you can borrow club equipment you can buy equipment gradually, for example starting with a glove at £20.',
 		),
 	);
 }
@@ -1499,3 +1512,32 @@ function kfc_contact_faq_schema() {
 	echo "\n</script>\n";
 }
 add_action( 'wp_head', 'kfc_contact_faq_schema' );
+
+/**
+ * Shop Page Content Shortcode
+ *
+ * Displays the WooCommerce shop page content on the product archive.
+ * This is needed because the archive-product template's wp:post-content
+ * block renders the first product's content instead of the shop page content.
+ *
+ * Usage: [shop_page_content]
+ */
+function kfc_shop_page_content_shortcode() {
+	$shop_page_id = wc_get_page_id( 'shop' );
+
+	if ( $shop_page_id <= 0 ) {
+		return '';
+	}
+
+	$shop_page = get_post( $shop_page_id );
+
+	if ( ! $shop_page || $shop_page->post_status !== 'publish' ) {
+		return '';
+	}
+
+	// Apply content filters to render blocks and shortcodes
+	$content = apply_filters( 'the_content', $shop_page->post_content );
+
+	return $content;
+}
+add_shortcode( 'shop_page_content', 'kfc_shop_page_content_shortcode' );
